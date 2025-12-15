@@ -1,0 +1,65 @@
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.env.local
+.env.*.local
+
+# OS
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+$RECYCLE.BIN/
+
+# Temp files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# Build outputs
+node_modules/
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# Package files
+*.zip
+*.rar
+*.tar.gz
+*.7z
+
+# Local development
+.env
+.env.local
+*.local
+
+# Testing
+coverage/
+.coverage
+test-results/
+
+# Editor backup files
+*~
+*.swp
+*.swo
+.#*
+
+# Archive files
+*.archive
+*.backup
+old/
+backup/
