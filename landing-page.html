@@ -1,0 +1,1068 @@
+<!-- 
+    Landing Page - الذكاء الاصطناعي لتعزيز الإنتاجية والابتكار المؤسسي
+    Mobile-First | Futuristic Design | Industry 4.0 Theme
+    م. محمد شعبان - TechnoEgypt | RoboVAI Solutions
+-->
+
+<style>
+  :root {
+    --primary: #0066ff;
+    --secondary: #00d4aa;
+    --neon: #00f0ff;
+    --purple: #4a6cf7;
+    --dark: #0a0a0f;
+    --dark2: #12121a;
+    --glass: rgba(255, 255, 255, 0.08);
+    --gradient: linear-gradient(135deg, #0066ff 0%, #4a6cf7 100%);
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .lp {
+    font-family: 'Segoe UI', sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.7;
+    color: #fff;
+    background: var(--dark);
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+  .lp a {
+    text-decoration: none;
+    color: inherit;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px var(--neon);
+    }
+    50% {
+      box-shadow: 0 0 40px var(--neon), 0 0 60px var(--purple);
+    }
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  @keyframes slide {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes particle {
+    0% {
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .p {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon);
+    border-radius: 50%;
+    animation: particle 20s linear infinite;
+  }
+  .p:nth-child(2n) {
+    background: var(--purple);
+    animation-duration: 25s;
+  }
+  .p:nth-child(3n) {
+    background: var(--secondary);
+    width: 6px;
+    height: 6px;
+  }
+  .con {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 15px 40px;
+    position: relative;
+    background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 102, 255, 0.1) 0%,
+      transparent 50%
+    );
+    animation: rotate 30s linear infinite;
+  }
+  .hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        rgba(0, 240, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .hero-c {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    animation: slide 0.8s ease-out;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    animation: slide 0.8s ease-out 0.2s backwards;
+  }
+  .grad {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 25px;
+    animation: slide 0.8s ease-out 0.4s backwards;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+    animation: slide 0.8s ease-out 0.6s backwards;
+  }
+  .stat {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 15px 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+  }
+  .stat:hover {
+    transform: scale(1.05);
+    border-color: var(--neon);
+  }
+  .stat-n {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--neon);
+    display: block;
+  }
+  .stat-l {
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
+  .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slide 0.8s ease-out 0.8s backwards;
+  }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-p {
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+  }
+  .btn-p:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 102, 255, 0.5);
+  }
+  .btn-g {
+    background: var(--glass);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  .btn-g:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--neon);
+  }
+  .btn-w {
+    background: #25d366;
+    color: #fff;
+  }
+  .btn-w:hover {
+    background: #1da851;
+  }
+  .sec {
+    padding: 60px 15px;
+    position: relative;
+  }
+  .sec-d {
+    background: var(--dark2);
+  }
+  .sec-t {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  .sec-t h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .sec-t p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+  .feat-g {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .feat {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 22px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  .feat:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon);
+  }
+  .feat:hover::before {
+    transform: scaleX(1);
+  }
+  .feat-i {
+    width: 55px;
+    height: 55px;
+    background: var(--gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  .feat h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .feat p {
+    opacity: 0.7;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .tl {
+    position: relative;
+    padding-right: 30px;
+  }
+  .tl::before {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient);
+    border-radius: 3px;
+  }
+  .tl-i {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  .tl-dot {
+    position: absolute;
+    right: -30px;
+    width: 18px;
+    height: 18px;
+    background: var(--neon);
+    border-radius: 50%;
+    border: 3px solid var(--dark);
+    box-shadow: 0 0 15px var(--neon);
+  }
+  .tl-c {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .tl-day {
+    display: inline-block;
+    background: var(--gradient);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+  .tl-c h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .tl-c ul {
+    list-style: none;
+  }
+  .tl-c li {
+    padding: 5px 0 5px 0;
+    padding-right: 18px;
+    position: relative;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+  .tl-c li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--secondary);
+  }
+  .nums {
+    background: var(--gradient);
+    padding: 45px 15px;
+  }
+  .nums-g {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: center;
+  }
+  .num-v {
+    font-size: 2.2rem;
+    font-weight: 800;
+    display: block;
+  }
+  .num-l {
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+  .tools-g {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .tool {
+    background: var(--glass);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tool:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
+  }
+  .aud-g {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .aud {
+    background: var(--glass);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+  }
+  .aud:hover {
+    background: var(--primary);
+    transform: translateX(-5px);
+  }
+  .aud-i {
+    font-size: 1.8rem;
+    min-width: 45px;
+    text-align: center;
+  }
+  .aud h4 {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+  }
+  .aud p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin: 0;
+  }
+  .trainer {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 102, 255, 0.15) 0%,
+      rgba(177, 74, 237, 0.15) 100%
+    );
+    text-align: center;
+  }
+  .tr-av {
+    width: 110px;
+    height: 110px;
+    background: var(--gradient);
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    animation: glow 3s ease-in-out infinite, float 3s ease-in-out infinite;
+  }
+  .trainer h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+  .tr-title {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+    color: var(--neon);
+  }
+  .tr-bio {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tr-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tr-link {
+    background: var(--glass);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .tr-link:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  .cta {
+    background: var(--dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(0, 102, 255, 0.12) 0%,
+      transparent 70%
+    );
+    transform: translate(-50%, -50%);
+  }
+  .cta-c {
+    position: relative;
+    z-index: 1;
+  }
+  .cta h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  .cta > p,
+  .cta-c > p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+  .cta-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  .contact-i {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .c-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+  .footer {
+    background: #050508;
+    padding: 35px 15px 20px;
+    text-align: center;
+  }
+  .f-brand {
+    margin-bottom: 20px;
+  }
+  .f-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .f-tag {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  .f-div {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 18px 0;
+  }
+  .f-company {
+    margin-bottom: 18px;
+  }
+  .f-company h4 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--neon);
+  }
+  .f-company p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+  .f-links {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 15px;
+  }
+  .f-links a {
+    opacity: 0.7;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+  }
+  .f-links a:hover {
+    opacity: 1;
+    color: var(--neon);
+  }
+  .f-copy {
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+  @media (min-width: 600px) {
+    .lp {
+      font-size: 15px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .btns {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .feat-g {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .aud-g {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cta-btns {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .contact-i {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  @media (min-width: 992px) {
+    .lp {
+      font-size: 16px;
+    }
+    .con {
+      padding: 0 30px;
+    }
+    .sec {
+      padding: 90px 30px;
+    }
+    .hero {
+      padding: 100px 30px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+    }
+    .sec-t h2 {
+      font-size: 2rem;
+    }
+    .feat-g {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+    .stat-n {
+      font-size: 2.3rem;
+    }
+    .tl {
+      max-width: 650px;
+      margin: 0 auto;
+      padding-right: 45px;
+    }
+    .tl::before {
+      right: 12px;
+    }
+    .tl-dot {
+      right: -38px;
+      width: 22px;
+      height: 22px;
+    }
+    .aud-g {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .tr-av {
+      width: 140px;
+      height: 140px;
+      font-size: 3.5rem;
+    }
+    .trainer h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<div class="lp">
+  <div class="particles">
+    <div class="p" style="left: 5%; animation-delay: 0s"></div>
+    <div class="p" style="left: 15%; animation-delay: 3s"></div>
+    <div class="p" style="left: 25%; animation-delay: 1s"></div>
+    <div class="p" style="left: 35%; animation-delay: 4s"></div>
+    <div class="p" style="left: 45%; animation-delay: 2s"></div>
+    <div class="p" style="left: 55%; animation-delay: 5s"></div>
+    <div class="p" style="left: 65%; animation-delay: 1s"></div>
+    <div class="p" style="left: 75%; animation-delay: 3s"></div>
+    <div class="p" style="left: 85%; animation-delay: 2s"></div>
+    <div class="p" style="left: 95%; animation-delay: 4s"></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-c">
+      <div class="badge">
+        <span class="dot"></span>🚀 الثورة الصناعية الرابعة - Industry 4.0
+      </div>
+      <h1>
+        <span class="grad">الذكاء الاصطناعي</span><br />لتعزيز الإنتاجية
+        والابتكار
+      </h1>
+      <p class="hero-sub">
+        حوّل طريقة عملك بأحدث أدوات AI التوليدي - تدريب عملي 100% لقطاع البترول
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-n">100+</span><span class="stat-l">أداة AI</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">100</span><span class="stat-l">برومبت</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">15</span><span class="stat-l">ساعة</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">27</span><span class="stat-l">فكرة</span>
+        </div>
+      </div>
+      <div class="btns">
+        <a href="#reg" class="btn btn-p">📝 سجل الآن</a>
+        <a href="#prog" class="btn btn-g">📋 البرنامج</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-d">
+    <div class="con">
+      <div class="sec-t">
+        <h2>🎯 لماذا هذا البرنامج؟</h2>
+        <p>تدريب عملي مخصص لاحتياجاتك</p>
+      </div>
+      <div class="feat-g">
+        <div class="feat">
+          <div class="feat-i">💼</div>
+          <h3>مخصص للبترول</h3>
+          <p>أمثلة من واقع شركات البترول والطاقة</p>
+        </div>
+        <div class="feat">
+          <div class="feat-i">🛠️</div>
+          <h3>أدوات مجانية</h3>
+          <p>جميع الأدوات مجانية - ابدأ فوراً</p>
+        </div>
+        <div class="feat">
+          <div class="feat-i">🧑‍💼</div>
+          <h3>لغير التقنيين</h3>
+          <p>لا يتطلب خلفية برمجية</p>
+        </div>
+        <div class="feat">
+          <div class="feat-i">🎓</div>
+          <h3>مشروع حقيقي</h3>
+          <p>حل مشكلة فعلية في إدارتك</p>
+        </div>
+        <div class="feat">
+          <div class="feat-i">📚</div>
+          <h3>100 برومبت</h3>
+          <p>مكتبة جاهزة لكل الإدارات</p>
+        </div>
+        <div class="feat">
+          <div class="feat-i">🤝</div>
+          <h3>دعم مستمر</h3>
+          <p>واتساب + موارد + متابعة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="prog">
+    <div class="con">
+      <div class="sec-t">
+        <h2>📅 رحلة 3 أيام</h2>
+        <p>15 ساعة تعلم عملي</p>
+      </div>
+      <div class="tl">
+        <div class="tl-i">
+          <div class="tl-dot"></div>
+          <div class="tl-c">
+            <span class="tl-day">اليوم الأول</span>
+            <h3>الأساسيات</h3>
+            <ul>
+              <li>مقدمة AI التوليدي</li>
+              <li>كتابة البرومبتات CRAFT</li>
+              <li>أدوات الكتابة والإنتاجية</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-i">
+          <div class="tl-dot"></div>
+          <div class="tl-c">
+            <span class="tl-day">اليوم الثاني</span>
+            <h3>التطبيقات المتقدمة</h3>
+            <ul>
+              <li>التصميم بالـ AI</li>
+              <li>تحليل البيانات</li>
+              <li>الفيديو والصوت</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-i">
+          <div class="tl-dot"></div>
+          <div class="tl-c">
+            <span class="tl-day">اليوم الثالث</span>
+            <h3>التطبيق العملي</h3>
+            <ul>
+              <li>دراسات حالة</li>
+              <li>مشروع التخرج</li>
+              <li>العروض والمناقشة</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nums">
+    <div class="con">
+      <div class="nums-g">
+        <div>
+          <span class="num-v">100+</span><span class="num-l">أداة AI</span>
+        </div>
+        <div>
+          <span class="num-v">100</span><span class="num-l">برومبت</span>
+        </div>
+        <div><span class="num-v">8</span><span class="num-l">إدارات</span></div>
+        <div>
+          <span class="num-v">50+</span><span class="num-l">مشروع</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-d">
+    <div class="con">
+      <div class="sec-t">
+        <h2>🛠️ الأدوات</h2>
+        <p>أقوى أدوات AI المجانية</p>
+      </div>
+      <div class="tools-g">
+        <div class="tool">🤖 ChatGPT</div>
+        <div class="tool">🔷 Copilot</div>
+        <div class="tool">🎨 Canva</div>
+        <div class="tool">🖼️ Leonardo</div>
+        <div class="tool">🎬 Runway</div>
+        <div class="tool">🎙️ ElevenLabs</div>
+        <div class="tool">📊 Julius</div>
+        <div class="tool">📝 Gamma</div>
+        <div class="tool">🔍 Perplexity</div>
+        <div class="tool">🎥 HeyGen</div>
+        <div class="tool">📄 ChatPDF</div>
+        <div class="tool">🎵 Suno</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="con">
+      <div class="sec-t">
+        <h2>👥 لمن البرنامج؟</h2>
+        <p>لجميع الإدارات</p>
+      </div>
+      <div class="aud-g">
+        <div class="aud">
+          <div class="aud-i">👔</div>
+          <div>
+            <h4>HR</h4>
+            <p>توظيف وتدريب</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">💰</div>
+          <div>
+            <h4>المالية</h4>
+            <p>تحليل وتقارير</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">📢</div>
+          <div>
+            <h4>التسويق</h4>
+            <p>محتوى وتصميم</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">⛽</div>
+          <div>
+            <h4>العمليات</h4>
+            <p>المحطات</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">🦺</div>
+          <div>
+            <h4>HSE</h4>
+            <p>السلامة</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">📞</div>
+          <div>
+            <h4>العملاء</h4>
+            <p>الدعم</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">👨‍💼</div>
+          <div>
+            <h4>الإدارة</h4>
+            <p>القرارات</p>
+          </div>
+        </div>
+        <div class="aud">
+          <div class="aud-i">📋</div>
+          <div>
+            <h4>الإدارية</h4>
+            <p>السكرتارية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec trainer">
+    <div class="con">
+      <div class="tr-av">👨‍💻</div>
+      <h2>م. محمد شعبان</h2>
+      <p class="tr-title">
+        Mechatronics Eng. | AI & Digital Product Manager
+      </p>
+      <p class="tr-bio">
+        مهندس ميكاترونكس متخصص في تطبيقات الذكاء الاصطناعي، التحول الرقمي، وإدارة
+        المشاريع الرقمية. يهدف لدمج التكنولوجيا بالأعمال لتقديم حلول ذكية. مؤسس
+        شركة RoboVAI Solutions الناشئة ومبادرة TechnoEgypt.
+      </p>
+      <div class="tr-links">
+        <a href="https://robovai.blogspot.com/" target="_blank" class="tr-link"
+          >🤖 RoboVAI</a
+        >
+        <a
+          href="https://www.facebook.com/technoegypt0"
+          target="_blank"
+          class="tr-link"
+          >📘 TechnoEgypt</a
+        >
+        <a
+          href="https://linkedin.com/in/moshabann"
+          target="_blank"
+          class="tr-link"
+          >💼 LinkedIn</a
+        >
+        <a href="https://github.com/m0shaban" target="_blank" class="tr-link"
+          >💻 GitHub</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cta" id="reg">
+    <div class="con cta-c">
+      <h2>🚀 ابدأ التحول الرقمي!</h2>
+      <p>انضم واكتشف قوة الـ AI في مضاعفة إنتاجيتك</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/201121891913" target="_blank" class="btn btn-w"
+          >📱 واتساب</a
+        >
+        <a href="mailto:contact.robovai@gmail.com" class="btn btn-g"
+          >✉️ إيميل</a
+        >
+      </div>
+      <div class="contact-i">
+        <div class="c-item">📞 +20 112 189 1913</div>
+        <div class="c-item">📍 6 أكتوبر، مصر</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="con">
+      <div class="f-brand">
+        <div class="f-logo">🤖 RoboVAI Solutions</div>
+        <p class="f-tag">شريكك في التحول الرقمي</p>
+      </div>
+      <div class="f-div"></div>
+      <div class="f-company">
+        <h4>عن RoboVAI</h4>
+        <p>
+          شركة ناشئة تسعى لتقديم حلول الذكاء الاصطناعي، الأتمتة، وتطوير الحلول
+          الرقمية للقطاعات الحكومية والخاصة ومؤسسات المجتمع المدني.
+        </p>
+      </div>
+      <div class="f-links">
+        <a href="https://robovai.blogspot.com/" target="_blank">RoboVAI</a>
+        <a href="https://www.facebook.com/technoegypt0" target="_blank"
+          >TechnoEgypt</a
+        >
+        <a href="https://linkedin.com/in/moshabann" target="_blank">LinkedIn</a>
+      </div>
+      <p class="f-copy">© 2025 RoboVAI Solutions | م. محمد شعبان</p>
+    </div>
+  </footer>
+</div>
