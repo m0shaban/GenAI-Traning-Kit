@@ -43,10 +43,17 @@ body {
 .header h1 {
     font-size: 2.3rem;
     margin-bottom: 0.75rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-light);
+}
+
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+    .page-header h1,
+    .header h1 {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 .page-header p,
@@ -145,7 +152,8 @@ body {
     border-radius: 1rem;
     padding: 1.25rem;
     border-right: 4px solid var(--primary-color);
-    color: var(--text-light);
+    color: var(--text-dark);
+    opacity: 0.9;
 }
 
 /* ==================== Portal (Protected Entry) ==================== */
@@ -237,10 +245,16 @@ body {
 .dashboard-header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-light);
+}
+
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+    .dashboard-header h1 {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 .dashboard-header p {
@@ -423,7 +437,8 @@ body {
 
 .content-item-description {
     font-size: 0.9rem;
-    color: var(--text-light);
+    color: var(--text-dark);
+    opacity: 0.75;
 }
 
 .dashboard-badge {
@@ -447,6 +462,7 @@ body {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(236, 72, 153, 0.05));
     border-radius: 0.75rem;
     border-left: 4px solid var(--primary-color);
+    color: var(--text-dark);
 }
 
 .dashboard-info-title {
@@ -456,7 +472,8 @@ body {
 }
 
 .dashboard-info-body {
-    color: var(--text-light);
+    color: inherit;
+    opacity: 0.85;
 }
 
 .dashboard-footer {
@@ -513,10 +530,16 @@ body {
 .pdf-header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-light);
+}
+
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+    .pdf-header h1 {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 .pdf-subtitle {
@@ -638,6 +661,7 @@ body {
     border-radius: 1rem;
     margin-top: 2rem;
     border-left: 4px solid var(--primary-color);
+    color: var(--text-dark);
 }
 
 .pdf-info-title {
@@ -646,7 +670,8 @@ body {
 }
 
 .pdf-info-list {
-    color: var(--text-light);
+    color: inherit;
+    opacity: 0.85;
     line-height: 1.8;
     padding-right: 1.5rem;
 }
@@ -700,10 +725,16 @@ body {
 .agenda-header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-light);
+}
+
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+    .agenda-header h1 {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 .agenda-header p {
@@ -746,6 +777,7 @@ body {
     padding: 1.5rem;
     border-radius: 0.75rem;
     border-left: 4px solid var(--primary-color);
+    color: var(--text-dark);
 }
 
 .agenda-goal.is-primary {
@@ -779,7 +811,8 @@ body {
 
 .agenda-goal-desc {
     font-size: 0.9rem;
-    color: var(--text-light);
+    color: inherit;
+    opacity: 0.75;
 }
 
 .day-section {
