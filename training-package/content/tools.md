@@ -556,12 +556,12 @@
 
 ### 11) المراجع والمصادر
 
-| المورد                | الرابط                  | الاستخدام الأسرع       |
-| --------------------- | ----------------------- | ---------------------- |
-| Futurepedia           | futurepedia.io          | دليل أدوات محدث يومياً |
-| OpenAI Blog           | openai.com/blog         | تحديثات ونصائح رسمية   |
-| Microsoft AI Blog     | blogs.microsoft.com/ai  | حالات استخدام وأدلة    |
-| LinkedIn (محمد شعبان) | linkedin.com/in/moshabann | تحديثات مهنية        |
+| المورد                | الرابط                    | الاستخدام الأسرع       |
+| --------------------- | ------------------------- | ---------------------- |
+| Futurepedia           | futurepedia.io            | دليل أدوات محدث يومياً |
+| OpenAI Blog           | openai.com/blog           | تحديثات ونصائح رسمية   |
+| Microsoft AI Blog     | blogs.microsoft.com/ai    | حالات استخدام وأدلة    |
+| LinkedIn (محمد شعبان) | linkedin.com/in/moshabann | تحديثات مهنية          |
 
 ---
 

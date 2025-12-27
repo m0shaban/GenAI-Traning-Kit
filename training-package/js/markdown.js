@@ -28,7 +28,8 @@
   function normalizeUrl(url) {
     const u = String(url || '').trim();
     if (!u) return '';
-    if (/^(https?:)?\/\//i.test(u)) return u.startsWith('//') ? 'https:' + u : u;
+    if (/^(https?:)?\/\//i.test(u))
+      return u.startsWith('//') ? 'https:' + u : u;
     if (/^(mailto:|tel:)/i.test(u)) return u;
     // common bare domains like chat.openai.com
     if (/^[a-z0-9.-]+\.[a-z]{2,}([/:?#].*)?$/i.test(u)) return 'https://' + u;
@@ -48,7 +49,13 @@
       if (isHash) {
         return '<a href="' + escapeHtml(href) + '">' + safeLabel + '</a>';
       }
-      return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener">' + safeLabel + '</a>';
+      return (
+        '<a href="' +
+        escapeHtml(href) +
+        '" target="_blank" rel="noopener">' +
+        safeLabel +
+        '</a>'
+      );
     });
 
     // inline code
@@ -63,10 +70,20 @@
     out = out.replace(/(^|\s)\*([^*]+)\*(?=\s|$)/g, '$1<em>$2</em>');
 
     // bare URLs (domain.tld...)
-    out = out.replace(/(^|\s)([a-z0-9.-]+\.[a-z]{2,}(?:\/[\w\-./?%#=&+~:]*)?)/gi, function (_, pre, raw) {
-      const href = normalizeUrl(raw);
-      return pre + '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener">' + escapeHtml(raw) + '</a>';
-    });
+    out = out.replace(
+      /(^|\s)([a-z0-9.-]+\.[a-z]{2,}(?:\/[\w\-./?%#=&+~:]*)?)/gi,
+      function (_, pre, raw) {
+        const href = normalizeUrl(raw);
+        return (
+          pre +
+          '<a href="' +
+          escapeHtml(href) +
+          '" target="_blank" rel="noopener">' +
+          escapeHtml(raw) +
+          '</a>'
+        );
+      }
+    );
 
     return out;
   }
@@ -86,7 +103,7 @@
     let s = line.trim();
     if (s.startsWith('|')) s = s.slice(1);
     if (s.endsWith('|')) s = s.slice(0, -1);
-    return s.split('|').map(c => c.trim());
+    return s.split('|').map((c) => c.trim());
   }
 
   function renderTable(lines, startIndex) {
@@ -107,12 +124,12 @@
     }
 
     let html = '<div class="md-table-wrap"><table class="md-table"><thead><tr>';
-    headers.forEach(h => {
+    headers.forEach((h) => {
       html += '<th>' + renderInline(h) + '</th>';
     });
     html += '</tr></thead><tbody>';
 
-    rows.forEach(r => {
+    rows.forEach((r) => {
       html += '<tr>';
       for (let c = 0; c < headers.length; c++) {
         html += '<td>' + renderInline(r[c] || '') + '</td>';
@@ -125,7 +142,9 @@
   }
 
   function render(markdown) {
-    const lines = String(markdown || '').replace(/\r\n?/g, '\n').split('\n');
+    const lines = String(markdown || '')
+      .replace(/\r\n?/g, '\n')
+      .split('\n');
 
     let html = '';
     let inCode = false;
@@ -137,12 +156,21 @@
     let inBlockquote = false;
 
     function closeLists() {
-      if (inUl) { html += '</ul>'; inUl = false; }
-      if (inOl) { html += '</ol>'; inOl = false; }
+      if (inUl) {
+        html += '</ul>';
+        inUl = false;
+      }
+      if (inOl) {
+        html += '</ol>';
+        inOl = false;
+      }
     }
 
     function closeBlockquote() {
-      if (inBlockquote) { html += '</blockquote>'; inBlockquote = false; }
+      if (inBlockquote) {
+        html += '</blockquote>';
+        inBlockquote = false;
+      }
     }
 
     function flushParagraph(text) {
@@ -176,7 +204,12 @@
         } else {
           const code = escapeHtml(codeBuf.join('\n'));
           const langClass = codeLang ? ' language-' + escapeHtml(codeLang) : '';
-          html += '<div class="md-code"><button class="md-copy" type="button">نسخ</button><pre><code class="md-code-inner' + langClass + '">' + code + '</code></pre></div>';
+          html +=
+            '<div class="md-code"><button class="md-copy" type="button">نسخ</button><pre><code class="md-code-inner' +
+            langClass +
+            '">' +
+            code +
+            '</code></pre></div>';
           inCode = false;
           codeLang = '';
           codeBuf = [];
@@ -218,7 +251,16 @@
         const level = h[1].length;
         const text = h[2].trim();
         const id = slugify(text);
-        html += '<h' + level + ' id="' + escapeHtml(id) + '">' + renderInline(text) + '</h' + level + '>';
+        html +=
+          '<h' +
+          level +
+          ' id="' +
+          escapeHtml(id) +
+          '">' +
+          renderInline(text) +
+          '</h' +
+          level +
+          '>';
         continue;
       }
 
@@ -227,7 +269,10 @@
       if (bq) {
         flushParagraphBuf();
         closeLists();
-        if (!inBlockquote) { html += '<blockquote>'; inBlockquote = true; }
+        if (!inBlockquote) {
+          html += '<blockquote>';
+          inBlockquote = true;
+        }
         const inner = bq[1] || '';
         if (inner.trim()) {
           html += '<p>' + renderInline(inner.trim()) + '</p>';
@@ -241,7 +286,11 @@
       const ul = line.match(/^\s*[-*]\s+(.*)$/);
       if (ul) {
         flushParagraphBuf();
-        if (!inUl) { closeLists(); html += '<ul>'; inUl = true; }
+        if (!inUl) {
+          closeLists();
+          html += '<ul>';
+          inUl = true;
+        }
         html += '<li>' + renderInline(ul[1].trim()) + '</li>';
         continue;
       }
@@ -250,7 +299,11 @@
       const ol = line.match(/^\s*\d+\.\s+(.*)$/);
       if (ol) {
         flushParagraphBuf();
-        if (!inOl) { closeLists(); html += '<ol>'; inOl = true; }
+        if (!inOl) {
+          closeLists();
+          html += '<ol>';
+          inOl = true;
+        }
         html += '<li>' + renderInline(ol[1].trim()) + '</li>';
         continue;
       }
@@ -276,6 +329,6 @@
   global.SimpleMarkdown = {
     render,
     slugify,
-    normalizeUrl
+    normalizeUrl,
   };
 })(window);

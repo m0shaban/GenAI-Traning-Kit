@@ -4,14 +4,14 @@
   "description": "حقيبة تدريبية شاملة في الذكاء الاصطناعي والأدوات الحديثة",
   "author": "GenAI Team",
   "license": "All Rights Reserved",
-  
+
   "security": {
     "contentPassword": "2024",
     "copyPassword": "protect2024",
     "passwordDelay": 10000,
     "maxAttempts": 5
   },
-  
+
   "pages": {
     "index": {
       "title": "حقيبة تدريب الذكاء الاصطناعي",
@@ -19,7 +19,7 @@
       "protected": true
     }
   },
-  
+
   "features": {
     "passwordProtection": true,
     "copyProtection": true,
@@ -29,7 +29,7 @@
     "multiLanguage": false,
     "offlineSupport": false
   },
-  
+
   "deployment": {
     "platform": "GitHub Pages",
     "domain": "https://m0shaban.github.io/GenAI-Training-Kit/",

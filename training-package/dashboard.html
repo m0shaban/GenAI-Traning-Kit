@@ -1,259 +1,301 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لوحة التحكم - حقيبة GenAI التدريبية</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-password-delay="0">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-password-delay="0">
     <!-- ==================== Password Modal ==================== -->
     <div id="passwordModal" class="password-modal">
-        <div class="password-container">
-            <h1>🔐 الدخول للمحتوى</h1>
-            <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
-            <input
-                type="password"
-                id="passwordInput"
-                class="password-input"
-                placeholder="أدخل رمز الدخول"
-                autocomplete="off"
-            >
-            <button id="passwordBtn" class="password-btn">متابعة</button>
-            <div id="errorMessage" class="error-message"></div>
-        </div>
+      <div class="password-container">
+        <h1>🔐 الدخول للمحتوى</h1>
+        <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="أدخل رمز الدخول"
+          autocomplete="off"
+        />
+        <button id="passwordBtn" class="password-btn">متابعة</button>
+        <div id="errorMessage" class="error-message"></div>
+      </div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">🚀 GenAI Training Kit</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="intro.html" class="nav-link">معلومات الحقيبة</a></li>
-                <li><a href="index.html" class="nav-link">بوابة الدخول</a></li>
-            </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="GenAI PowerUP Logo" style="height: 50px; margin-left: 10px; vertical-align: middle;">
+          <span class="logo-text">GenAI PowerUP</span>
         </div>
+        <ul class="nav-menu">
+          <li><a href="intro.html" class="nav-link">معلومات الحقيبة</a></li>
+          <li><a href="index.html" class="nav-link">بوابة الدخول</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="dashboard-container">
-        <!-- Header -->
-        <div class="dashboard-header">
-            <h1>🎓 لوحة التحكم الرئيسية</h1>
-            <p>مرحباً بك في حقيبة GenAI التدريبية الشاملة</p>
+      <!-- Header -->
+      <div class="dashboard-header">
+        <h1>🎓 لوحة التحكم الرئيسية</h1>
+        <p>مرحباً بك في حقيبة GenAI التدريبية الشاملة</p>
+      </div>
+
+      <!-- Quick Access -->
+      <div class="quick-access">
+        <h3>⚡ الوصول السريع</h3>
+        <div class="quick-links">
+          <a href="agenda.html" class="quick-link">📅 الأجندة التفصيلية</a>
+          <a href="presentations.html" class="quick-link"
+            >📊 العروض التقديمية</a
+          >
+          <a href="tools.html" class="quick-link">🛠️ الأدوات والموارد</a>
+          <a href="prompts.html" class="quick-link">💡 مكتبة البروميبتات</a>
+        </div>
+      </div>
+
+      <!-- Progress Section -->
+      <div class="progress-section">
+        <h3 class="progress-title">📈 تقدمك في البرنامج</h3>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>اليوم الأول: الأساسيات والمقدمة</span>
+            <span>25%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 25%"></div>
+          </div>
         </div>
 
-        <!-- Quick Access -->
-        <div class="quick-access">
-            <h3>⚡ الوصول السريع</h3>
-            <div class="quick-links">
-                <a href="agenda.html" class="quick-link">📅 الأجندة التفصيلية</a>
-                <a href="presentations.html" class="quick-link">📊 العروض التقديمية</a>
-                <a href="tools.html" class="quick-link">🛠️ الأدوات والموارد</a>
-                <a href="prompts.html" class="quick-link">💡 مكتبة البروميبتات</a>
-            </div>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>اليوم الثاني: المحتوى الإبداعي</span>
+            <span>0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+          </div>
         </div>
 
-        <!-- Progress Section -->
-        <div class="progress-section">
-            <h3 class="progress-title">📈 تقدمك في البرنامج</h3>
-            
-            <div class="progress-item">
-                <div class="progress-label">
-                    <span>اليوم الأول: الأساسيات والمقدمة</span>
-                    <span>25%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 25%"></div>
-                </div>
-            </div>
-
-            <div class="progress-item">
-                <div class="progress-label">
-                    <span>اليوم الثاني: المحتوى الإبداعي</span>
-                    <span>0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="progress-item">
-                <div class="progress-label">
-                    <span>اليوم الثالث: التحليل والأتمتة</span>
-                    <span>0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="progress-item">
-                <div class="progress-label">
-                    <span>اليوم الرابع: الدمج والتطبيقات</span>
-                    <span>0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>اليوم الثالث: التحليل والأتمتة</span>
+            <span>0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+          </div>
         </div>
 
-        <!-- Main Navigation -->
-        <div class="nav-grid">
-            <a href="intro.html" class="nav-card active">
-                <div class="nav-card-icon">📖</div>
-                <div class="nav-card-title">معلومات البرنامج</div>
-                <div class="nav-card-description">تعرف على محتوى الحقيبة والمميزات والأهداف</div>
-            </a>
-
-            <a href="agenda.html" class="nav-card">
-                <div class="nav-card-icon">📅</div>
-                <div class="nav-card-title">الأجندة التفصيلية</div>
-                <div class="nav-card-description">جدول شامل لجميع الجلسات والأنشطة العملية</div>
-            </a>
-
-            <a href="presentations.html" class="nav-card">
-                <div class="nav-card-icon">📊</div>
-                <div class="nav-card-title">العروض التقديمية</div>
-                <div class="nav-card-description">4 عروض مفصلة وشاملة عن أدوات الذكاء الاصطناعي</div>
-            </a>
-
-            <a href="tools.html" class="nav-card">
-                <div class="nav-card-icon">🛠️</div>
-                <div class="nav-card-title">الأدوات والموارد</div>
-                <div class="nav-card-description">50+ أداة AI مع دليل الاستخدام والتسعير</div>
-            </a>
-
-            <a href="prompts.html" class="nav-card">
-                <div class="nav-card-icon">💡</div>
-                <div class="nav-card-title">مكتبة البروميبتات</div>
-                <div class="nav-card-description">100+ نموذج بروميبت جاهز للاستخدام الفوري</div>
-            </a>
-
-            <a href="cases.html" class="nav-card">
-                <div class="nav-card-icon">📌</div>
-                <div class="nav-card-title">حالات دراسية واقعية</div>
-                <div class="nav-card-description">تطبيقات عملية من قطاع البترول والصناعة</div>
-            </a>
-
-            <a href="projects.html" class="nav-card">
-                <div class="nav-card-icon">🚀</div>
-                <div class="nav-card-title">المشاريع</div>
-                <div class="nav-card-description">مشروع التخرج + نماذج تسليم عملية</div>
-            </a>
-
-            <a href="exercises.html" class="nav-card">
-                <div class="nav-card-icon">🧩</div>
-                <div class="nav-card-title">التدريبات</div>
-                <div class="nav-card-description">تحديات يومية قصيرة لتثبيت المهارات</div>
-            </a>
-
-            <a href="roadmap.html" class="nav-card">
-                <div class="nav-card-icon">🗺️</div>
-                <div class="nav-card-title">خريطة التعلم</div>
-                <div class="nav-card-description">مسار 30/60/90 يوم لبناء مستوى احترافي</div>
-            </a>
-
-            <a href="resources.html" class="nav-card">
-                <div class="nav-card-icon">🔗</div>
-                <div class="nav-card-title">مصادر التعلم</div>
-                <div class="nav-card-description">مراجع وروابط منظمة للتطوير المستمر</div>
-            </a>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>اليوم الرابع: الدمج والتطبيقات</span>
+            <span>0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+          </div>
         </div>
+      </div>
 
-        <!-- Content Section -->
-        <div class="content-section">
-            <h2>📚 المحتوى الرئيسي</h2>
-            <div class="content-grid">
-                <a href="agenda.html" class="content-item">
-                    <div class="content-item-icon">📅</div>
-                    <div class="content-item-title">الجدول الزمني</div>
-                    <div class="content-item-description">تفاصيل كل جلسة ووقتها ومحتواها</div>
-                </a>
+      <!-- Main Navigation -->
+      <div class="nav-grid">
+        <a href="intro.html" class="nav-card active">
+          <div class="nav-card-icon">📖</div>
+          <div class="nav-card-title">معلومات البرنامج</div>
+          <div class="nav-card-description">
+            تعرف على محتوى الحقيبة والمميزات والأهداف
+          </div>
+        </a>
 
-                <a href="presentations.html" class="content-item">
-                    <div class="content-item-icon">📊</div>
-                    <div class="content-item-title">الملفات والعروض</div>
-                    <div class="content-item-description">تحميل وعرض جميع الملفات والبرزنتيشنات</div>
-                </a>
+        <a href="agenda.html" class="nav-card">
+          <div class="nav-card-icon">📅</div>
+          <div class="nav-card-title">الأجندة التفصيلية</div>
+          <div class="nav-card-description">
+            جدول شامل لجميع الجلسات والأنشطة العملية
+          </div>
+        </a>
 
-                <a href="tools.html" class="content-item">
-                    <div class="content-item-icon">🤖</div>
-                    <div class="content-item-title">أدوات الـ AI</div>
-                    <div class="content-item-description">50+ أداة مصنفة حسب الفئة والتسعير</div>
-                </a>
+        <a href="presentations.html" class="nav-card">
+          <div class="nav-card-icon">📊</div>
+          <div class="nav-card-title">العروض التقديمية</div>
+          <div class="nav-card-description">
+            4 عروض مفصلة وشاملة عن أدوات الذكاء الاصطناعي
+          </div>
+        </a>
 
-                <a href="prompts.html" class="content-item">
-                    <div class="content-item-icon">💬</div>
-                    <div class="content-item-title">البروميبتات</div>
-                    <div class="content-item-description">أوامر جاهزة لكل حالة استخدام</div>
-                </a>
+        <a href="tools.html" class="nav-card">
+          <div class="nav-card-icon">🛠️</div>
+          <div class="nav-card-title">الأدوات والموارد</div>
+          <div class="nav-card-description">
+            100+ أداة AI مع دليل الاستخدام والتسعير
+          </div>
+        </a>
 
-                <a href="cases.html" class="content-item">
-                    <div class="content-item-icon">🎯</div>
-                    <div class="content-item-title">الحالات الدراسية</div>
-                    <div class="content-item-description">تطبيقات عملية وقصص نجاح حقيقية</div>
-                </a>
+        <a href="prompts.html" class="nav-card">
+          <div class="nav-card-icon">💡</div>
+          <div class="nav-card-title">مكتبة البروميبتات</div>
+          <div class="nav-card-description">
+            300+ نموذج برومبت جاهز للاستخدام الفوري
+          </div>
+        </a>
 
-                <a href="projects.html" class="content-item">
-                    <div class="content-item-icon">🚀</div>
-                    <div class="content-item-title">المشاريع</div>
-                    <div class="content-item-description">مشروع تخرج عملي ومخرجات قابلة للقياس</div>
-                </a>
+        <a href="cases.html" class="nav-card">
+          <div class="nav-card-icon">📌</div>
+          <div class="nav-card-title">حالات دراسية واقعية</div>
+          <div class="nav-card-description">
+            20+ حالة من 6 قطاعات مختلفة بنتائج موثقة
+          </div>
+        </a>
 
-                <a href="exercises.html" class="content-item">
-                    <div class="content-item-icon">🧩</div>
-                    <div class="content-item-title">التدريبات</div>
-                    <div class="content-item-description">تحديات قصيرة + واجبات تطبيقية</div>
-                </a>
+        <a href="projects.html" class="nav-card">
+          <div class="nav-card-icon">🚀</div>
+          <div class="nav-card-title">المشاريع</div>
+          <div class="nav-card-description">
+            15+ مشروع عملي جاهز للتطبيق في شركتك
+          </div>
+        </a>
 
-                <a href="roadmap.html" class="content-item">
-                    <div class="content-item-icon">🗺️</div>
-                    <div class="content-item-title">خريطة التعلم</div>
-                    <div class="content-item-description">خطوات واضحة لما بعد التدريب</div>
-                </a>
+        <a href="exercises.html" class="nav-card">
+          <div class="nav-card-icon">🧩</div>
+          <div class="nav-card-title">التدريبات</div>
+          <div class="nav-card-description">
+            تحديات يومية قصيرة لتثبيت المهارات
+          </div>
+        </a>
+
+        <a href="roadmap.html" class="nav-card">
+          <div class="nav-card-icon">🗺️</div>
+          <div class="nav-card-title">خريطة التعلم</div>
+          <div class="nav-card-description">
+            مسار 30/60/90 يوم لبناء مستوى احترافي
+          </div>
+        </a>
+
+        <a href="resources.html" class="nav-card">
+          <div class="nav-card-icon">🔗</div>
+          <div class="nav-card-title">مصادر التعلم</div>
+          <div class="nav-card-description">
+            مراجع وروابط منظمة للتطوير المستمر
+          </div>
+        </a>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content-section">
+        <h2>📚 المحتوى الرئيسي</h2>
+        <div class="content-grid">
+          <a href="agenda.html" class="content-item">
+            <div class="content-item-icon">📅</div>
+            <div class="content-item-title">الجدول الزمني</div>
+            <div class="content-item-description">
+              تفاصيل كل جلسة ووقتها ومحتواها
             </div>
-        </div>
+          </a>
 
-        <!-- Info Section -->
-        <div class="content-section">
-            <h2>ℹ️ معلومات مهمة</h2>
-            <div class="dashboard-info-grid">
-                <div class="dashboard-info-box">
-                    <div class="dashboard-info-title">🎓 المدة والساعات</div>
-                    <div class="dashboard-info-body">4 أيام متتالية | 20 ساعة تدريبية | من 9:00 صباحاً إلى 3:00 عصراً</div>
-                </div>
-
-                <div class="dashboard-info-box">
-                    <div class="dashboard-info-title">📊 محتويات الحقيبة</div>
-                    <div class="dashboard-info-body">
-                        <span class="dashboard-badge">50+ درس</span>
-                        <span class="dashboard-badge">100+ بروميبت</span>
-                        <span class="dashboard-badge">15+ أداة</span>
-                        <span class="dashboard-badge">4 عروض</span>
-                    </div>
-                </div>
-
-                <div class="dashboard-info-box">
-                    <div class="dashboard-info-title">🎯 الأهداف الرئيسية</div>
-                    <div class="dashboard-info-body">
-                        📊 توفير 40% من وقت العمل • 🎨 إنتاج محتوى احترافي • 🎯 تحليل بيانات ذكي • 🔗 أتمتة بدون كود
-                    </div>
-                </div>
+          <a href="presentations.html" class="content-item">
+            <div class="content-item-icon">📊</div>
+            <div class="content-item-title">الملفات والعروض</div>
+            <div class="content-item-description">
+              تحميل وعرض جميع الملفات والبرزنتيشنات
             </div>
-        </div>
+          </a>
 
-        <!-- Footer -->
-        <footer class="dashboard-footer">
-            <p>حقيبة GenAI التدريبية - جميع الحقوق محفوظة © 2026</p>
-            <p>برنامج شامل في الذكاء الاصطناعي والأتمتة والإنتاجية</p>
-        </footer>
+          <a href="tools.html" class="content-item">
+            <div class="content-item-icon">🤖</div>
+            <div class="content-item-title">أدوات الـ AI</div>
+            <div class="content-item-description">
+              100+ أداة مصنفة حسب الفئة والتسعير
+            </div>
+          </a>
+
+          <a href="prompts.html" class="content-item">
+            <div class="content-item-icon">💬</div>
+            <div class="content-item-title">البروميبتات</div>
+            <div class="content-item-description">
+              أوامر جاهزة لكل حالة استخدام
+            </div>
+          </a>
+
+          <a href="cases.html" class="content-item">
+            <div class="content-item-icon">🎯</div>
+            <div class="content-item-title">الحالات الدراسية</div>
+            <div class="content-item-description">
+              تطبيقات عملية وقصص نجاح حقيقية
+            </div>
+          </a>
+
+          <a href="projects.html" class="content-item">
+            <div class="content-item-icon">🚀</div>
+            <div class="content-item-title">المشاريع</div>
+            <div class="content-item-description">
+              مشروع تخرج عملي ومخرجات قابلة للقياس
+            </div>
+          </a>
+
+          <a href="exercises.html" class="content-item">
+            <div class="content-item-icon">🧩</div>
+            <div class="content-item-title">التدريبات</div>
+            <div class="content-item-description">
+              تحديات قصيرة + واجبات تطبيقية
+            </div>
+          </a>
+
+          <a href="roadmap.html" class="content-item">
+            <div class="content-item-icon">🗺️</div>
+            <div class="content-item-title">خريطة التعلم</div>
+            <div class="content-item-description">
+              خطوات واضحة لما بعد التدريب
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="content-section">
+        <h2>ℹ️ معلومات مهمة</h2>
+        <div class="dashboard-info-grid">
+          <div class="dashboard-info-box">
+            <div class="dashboard-info-title">🎓 المدة والساعات</div>
+            <div class="dashboard-info-body">
+              4 أيام متتالية | 20 ساعة تدريبية | من 9:00 صباحاً إلى 3:00 عصراً
+            </div>
+          </div>
+
+          <div class="dashboard-info-box">
+            <div class="dashboard-info-title">📊 محتويات الحقيبة</div>
+            <div class="dashboard-info-body">
+              <span class="dashboard-badge">50+ درس</span>
+              <span class="dashboard-badge">100+ بروميبت</span>
+              <span class="dashboard-badge">15+ أداة</span>
+              <span class="dashboard-badge">4 عروض</span>
+            </div>
+          </div>
+
+          <div class="dashboard-info-box">
+            <div class="dashboard-info-title">🎯 الأهداف الرئيسية</div>
+            <div class="dashboard-info-body">
+              📊 توفير 40% من وقت العمل • 🎨 إنتاج محتوى احترافي • 🎯 تحليل
+              بيانات ذكي • 🔗 أتمتة بدون كود
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="dashboard-footer">
+        <p>حقيبة GenAI التدريبية - جميع الحقوق محفوظة © 2026</p>
+        <p>برنامج شامل في الذكاء الاصطناعي والأتمتة والإنتاجية</p>
+      </footer>
     </div>
 
     <!-- Include protection script -->
     <script src="js/protection.js"></script>
     <script src="js/nav.js"></script>
-</body>
+  </body>
 </html>

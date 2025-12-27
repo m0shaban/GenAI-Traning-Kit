@@ -1,179 +1,211 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>العرض التقديمي - حقيبة GenAI</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-password-delay="0">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-password-delay="0">
     <!-- ==================== Password Modal ==================== -->
     <div id="passwordModal" class="password-modal">
-        <div class="password-container">
-            <h1>🔐 الدخول للمحتوى</h1>
-            <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
-            <input
-                type="password"
-                id="passwordInput"
-                class="password-input"
-                placeholder="أدخل رمز الدخول"
-                autocomplete="off"
-            >
-            <button id="passwordBtn" class="password-btn">متابعة</button>
-            <div id="errorMessage" class="error-message"></div>
-        </div>
+      <div class="password-container">
+        <h1>🔐 الدخول للمحتوى</h1>
+        <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="أدخل رمز الدخول"
+          autocomplete="off"
+        />
+        <button id="passwordBtn" class="password-btn">متابعة</button>
+        <div id="errorMessage" class="error-message"></div>
+      </div>
     </div>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">🚀 GenAI Training Kit</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
-                <li><a href="intro.html" class="nav-link">معلومات المحتوى</a></li>
-                <li><a href="agenda.html" class="nav-link">الأجندة</a></li>
-            </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="GenAI PowerUP Logo" style="height: 50px; margin-left: 10px; vertical-align: middle;">
+          <span class="logo-text">GenAI PowerUP</span>
         </div>
+        <ul class="nav-menu">
+          <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
+          <li><a href="intro.html" class="nav-link">معلومات المحتوى</a></li>
+          <li><a href="agenda.html" class="nav-link">الأجندة</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="pdf-container">
-        <div class="pdf-header">
-            <h1>📊 العرض التقديمي الكامل</h1>
-            <p class="pdf-subtitle">عروض تقديمية احترافية عن الذكاء الاصطناعي والأدوات المتاحة</p>
+      <div class="pdf-header">
+        <h1>📊 العرض التقديمي الكامل</h1>
+        <p class="pdf-subtitle">
+          عروض تقديمية احترافية عن الذكاء الاصطناعي والأدوات المتاحة
+        </p>
+      </div>
+
+      <!-- PDF Options -->
+      <div class="pdf-options">
+        <div class="pdf-option">
+          <div class="pdf-option-icon">📈</div>
+          <div class="pdf-option-title">تمكين الشركات بأدوات GenAI</div>
+          <div class="pdf-option-desc">
+            العرض التقديمي الرئيسي الشامل عن تمكين المؤسسات باستخدام أدوات
+            الذكاء الاصطناعي
+          </div>
+          <button
+            class="btn-pdf"
+            onclick="viewPDF('enterprise', 'تمكين الشركات بأدوات GenAI')"
+          >
+            عرض المستند
+          </button>
         </div>
 
-        <!-- PDF Options -->
-        <div class="pdf-options">
-            <div class="pdf-option">
-                <div class="pdf-option-icon">📈</div>
-                <div class="pdf-option-title">تمكين الشركات بأدوات GenAI</div>
-                <div class="pdf-option-desc">العرض التقديمي الرئيسي الشامل عن تمكين المؤسسات باستخدام أدوات الذكاء الاصطناعي</div>
-                <button class="btn-pdf" onclick="viewPDF('enterprise', 'تمكين الشركات بأدوات GenAI')">عرض المستند</button>
-            </div>
-
-            <div class="pdf-option">
-                <div class="pdf-option-icon">🤖</div>
-                <div class="pdf-option-title">دليل 101 أداة الذكاء الاصطناعي</div>
-                <div class="pdf-option-desc">دليل شامل يتضمن 101 أداة AI مع شرح الاستخدام والتسعير والمميزات</div>
-                <button class="btn-pdf" onclick="viewPDF('tools101', 'دليل 101 أداة')">عرض المستند</button>
-            </div>
-
-            <div class="pdf-option">
-                <div class="pdf-option-icon">💡</div>
-                <div class="pdf-option-title">أدوات الذكاء الاصطناعي للشركات</div>
-                <div class="pdf-option-desc">دليل متخصص يركز على الأدوات الأكثر استخداماً في بيئة العمل الشركاتية</div>
-                <button class="btn-pdf" onclick="viewPDF('enterpriseTools', 'أدوات AI للشركات')">عرض المستند</button>
-            </div>
-
-            <div class="pdf-option">
-                <div class="pdf-option-icon">✨</div>
-                <div class="pdf-option-title">برومبتات متقدمة وإبداعية</div>
-                <div class="pdf-option-desc">مجموعة متقدمة من الأوامر الإبداعية والمتخصصة للحصول على أفضل النتائج</div>
-                <button class="btn-pdf" onclick="viewPDF('advancedPrompts', 'برومبتات متقدمة')">عرض المستند</button>
-            </div>
+        <div class="pdf-option">
+          <div class="pdf-option-icon">🤖</div>
+          <div class="pdf-option-title">دليل 101 أداة الذكاء الاصطناعي</div>
+          <div class="pdf-option-desc">
+            دليل شامل يتضمن 101 أداة AI مع شرح الاستخدام والتسعير والمميزات
+          </div>
+          <button
+            class="btn-pdf"
+            onclick="viewPDF('tools101', 'دليل 101 أداة')"
+          >
+            عرض المستند
+          </button>
         </div>
 
-        <!-- PDF Viewer -->
-        <div id="pdfViewer" class="pdf-viewer">
-            <div class="pdf-controls">
-                <div class="pdf-title" id="pdfTitle">عرض المستند</div>
-                <button onclick="closePDF()">× إغلاق</button>
-            </div>
-            <iframe id="pdfFrame" src="" type="application/pdf"></iframe>
+        <div class="pdf-option">
+          <div class="pdf-option-icon">💡</div>
+          <div class="pdf-option-title">أدوات الذكاء الاصطناعي للشركات</div>
+          <div class="pdf-option-desc">
+            دليل متخصص يركز على الأدوات الأكثر استخداماً في بيئة العمل الشركاتية
+          </div>
+          <button
+            class="btn-pdf"
+            onclick="viewPDF('enterpriseTools', 'أدوات AI للشركات')"
+          >
+            عرض المستند
+          </button>
         </div>
 
-        <!-- Info Section -->
-        <div class="pdf-info">
-            <h3 class="pdf-info-title">💡 نصائح للاستفادة الأقصى</h3>
-            <ul class="pdf-info-list">
-                <li>📌 استخدم وظيفة البحث (Ctrl+F) للعثور على مواضيع محددة</li>
-                <li>🖨️ يمكنك طباعة المستند بالكامل أو جزء منه</li>
-                <li>💾 قم بتحميل المستندات على جهازك للرجوع إليها لاحقاً</li>
-                <li>📱 جميع المستندات متوافقة مع الهاتف الذكي</li>
-                <li>🔍 يمكنك التكبير والتصغير للقراءة بشكل أفضل</li>
-            </ul>
+        <div class="pdf-option">
+          <div class="pdf-option-icon">✨</div>
+          <div class="pdf-option-title">برومبتات متقدمة وإبداعية</div>
+          <div class="pdf-option-desc">
+            مجموعة متقدمة من الأوامر الإبداعية والمتخصصة للحصول على أفضل النتائج
+          </div>
+          <button
+            class="btn-pdf"
+            onclick="viewPDF('advancedPrompts', 'برومبتات متقدمة')"
+          >
+            عرض المستند
+          </button>
         </div>
+      </div>
 
-        <!-- Footer -->
-        <div class="pdf-footer">
-            <p>
-                جميع المستندات متوفرة للعرض والتحميل والطباعة
-            </p>
-            <p>
-                &copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.
-            </p>
+      <!-- PDF Viewer -->
+      <div id="pdfViewer" class="pdf-viewer">
+        <div class="pdf-controls">
+          <div class="pdf-title" id="pdfTitle">عرض المستند</div>
+          <button onclick="closePDF()">× إغلاق</button>
         </div>
+        <iframe id="pdfFrame" src="" type="application/pdf"></iframe>
+      </div>
+
+      <!-- Info Section -->
+      <div class="pdf-info">
+        <h3 class="pdf-info-title">💡 نصائح للاستفادة الأقصى</h3>
+        <ul class="pdf-info-list">
+          <li>📌 استخدم وظيفة البحث (Ctrl+F) للعثور على مواضيع محددة</li>
+          <li>🖨️ يمكنك طباعة المستند بالكامل أو جزء منه</li>
+          <li>💾 قم بتحميل المستندات على جهازك للرجوع إليها لاحقاً</li>
+          <li>📱 جميع المستندات متوافقة مع الهاتف الذكي</li>
+          <li>🔍 يمكنك التكبير والتصغير للقراءة بشكل أفضل</li>
+        </ul>
+      </div>
+
+      <!-- Footer -->
+      <div class="pdf-footer">
+        <p>جميع المستندات متوفرة للعرض والتحميل والطباعة</p>
+        <p>&copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.</p>
+      </div>
     </div>
 
     <!-- Include protection script -->
     <script src="js/protection.js"></script>
     <script src="js/nav.js"></script>
     <script>
-        const PDF_LINKS = {
-            // ضع هنا روابط Google Drive (أو IDs). سيتم تحويلها تلقائياً إلى رابط عرض داخل الصفحة.
-            enterprise: 'https://drive.google.com/file/d/1DCeJtgW3j0rZ1KOaDQACLydovCJzrLBV/view?usp=sharing',
-            tools101: 'https://drive.google.com/file/d/1IbCZQ-5O5C92Lm7wLFep_Qwq4byJZZ40/view?usp=sharing',
-            enterpriseTools: 'https://drive.google.com/file/d/1bcwH5DN-nuZNM_9Y-OdBlL773LL1BzTf/view?usp=sharing',
-            advancedPrompts: 'https://drive.google.com/file/d/1SPXbqlq8h-jBbdTyTZX9VEnKSKvklkl1/view?usp=sharing'
-        };
+      const PDF_LINKS = {
+        // ضع هنا روابط Google Drive (أو IDs). سيتم تحويلها تلقائياً إلى رابط عرض داخل الصفحة.
+        enterprise:
+          'https://drive.google.com/file/d/1DCeJtgW3j0rZ1KOaDQACLydovCJzrLBV/view?usp=sharing',
+        tools101:
+          'https://drive.google.com/file/d/1IbCZQ-5O5C92Lm7wLFep_Qwq4byJZZ40/view?usp=sharing',
+        enterpriseTools:
+          'https://drive.google.com/file/d/1bcwH5DN-nuZNM_9Y-OdBlL773LL1BzTf/view?usp=sharing',
+        advancedPrompts:
+          'https://drive.google.com/file/d/1SPXbqlq8h-jBbdTyTZX9VEnKSKvklkl1/view?usp=sharing',
+      };
 
-        function toDrivePreviewUrl(urlOrId) {
-            if (!urlOrId) return '';
+      function toDrivePreviewUrl(urlOrId) {
+        if (!urlOrId) return '';
 
-            const raw = String(urlOrId).trim();
-            if (!raw) return '';
+        const raw = String(urlOrId).trim();
+        if (!raw) return '';
 
-            // Accept either a full Drive share link or just a file ID
-            const isLikelyId = /^[a-zA-Z0-9_-]{10,}$/.test(raw);
-            if (isLikelyId) {
-                return `https://drive.google.com/file/d/${raw}/preview`;
-            }
-
-            // https://drive.google.com/file/d/<id>/view
-            const matchFile = raw.match(/\/file\/d\/([^/]+)\//);
-            if (matchFile && matchFile[1]) {
-                return `https://drive.google.com/file/d/${matchFile[1]}/preview`;
-            }
-
-            // https://drive.google.com/open?id=<id> or ...?id=<id>
-            const matchIdParam = raw.match(/[?&]id=([^&]+)/);
-            if (matchIdParam && matchIdParam[1]) {
-                return `https://drive.google.com/file/d/${matchIdParam[1]}/preview`;
-            }
-
-            // If already a preview URL or a direct embeddable URL, keep it
-            return raw;
+        // Accept either a full Drive share link or just a file ID
+        const isLikelyId = /^[a-zA-Z0-9_-]{10,}$/.test(raw);
+        if (isLikelyId) {
+          return `https://drive.google.com/file/d/${raw}/preview`;
         }
 
-        function viewPDF(key, title) {
-            const pdfUrl = toDrivePreviewUrl(PDF_LINKS[key]);
-            if (!pdfUrl) {
-                alert('الملف غير متاح حالياً.');
-                return;
-            }
-
-            const pdfFrame = document.getElementById('pdfFrame');
-            const pdfTitle = document.getElementById('pdfTitle');
-            const pdfViewer = document.getElementById('pdfViewer');
-            
-            pdfFrame.src = pdfUrl;
-            pdfTitle.textContent = title;
-            pdfViewer.classList.add('active');
-            
-            // Scroll to PDF viewer
-            pdfViewer.scrollIntoView({ behavior: 'smooth' });
+        // https://drive.google.com/file/d/<id>/view
+        const matchFile = raw.match(/\/file\/d\/([^/]+)\//);
+        if (matchFile && matchFile[1]) {
+          return `https://drive.google.com/file/d/${matchFile[1]}/preview`;
         }
 
-        function closePDF() {
-            const pdfViewer = document.getElementById('pdfViewer');
-            const pdfFrame = document.getElementById('pdfFrame');
-            
-            pdfViewer.classList.remove('active');
-            pdfFrame.src = '';
+        // https://drive.google.com/open?id=<id> or ...?id=<id>
+        const matchIdParam = raw.match(/[?&]id=([^&]+)/);
+        if (matchIdParam && matchIdParam[1]) {
+          return `https://drive.google.com/file/d/${matchIdParam[1]}/preview`;
         }
 
-        // Access protection is initialized by js/protection.js
+        // If already a preview URL or a direct embeddable URL, keep it
+        return raw;
+      }
+
+      function viewPDF(key, title) {
+        const pdfUrl = toDrivePreviewUrl(PDF_LINKS[key]);
+        if (!pdfUrl) {
+          alert('الملف غير متاح حالياً.');
+          return;
+        }
+
+        const pdfFrame = document.getElementById('pdfFrame');
+        const pdfTitle = document.getElementById('pdfTitle');
+        const pdfViewer = document.getElementById('pdfViewer');
+
+        pdfFrame.src = pdfUrl;
+        pdfTitle.textContent = title;
+        pdfViewer.classList.add('active');
+
+        // Scroll to PDF viewer
+        pdfViewer.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function closePDF() {
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfFrame = document.getElementById('pdfFrame');
+
+        pdfViewer.classList.remove('active');
+        pdfFrame.src = '';
+      }
+
+      // Access protection is initialized by js/protection.js
     </script>
-</body>
+  </body>
 </html>

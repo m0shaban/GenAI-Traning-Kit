@@ -3,7 +3,10 @@
 
   function prefersReducedMotion() {
     try {
-      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      return (
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      );
     } catch {
       return false;
     }
@@ -18,7 +21,10 @@
     btn.textContent = 'أعلى';
 
     btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+      });
     });
 
     document.body.appendChild(btn);
@@ -71,7 +77,9 @@
 
     headings.forEach((h) => {
       if (!h.id) {
-        h.id = window.SimpleMarkdown ? window.SimpleMarkdown.slugify(h.textContent) : '';
+        h.id = window.SimpleMarkdown
+          ? window.SimpleMarkdown.slugify(h.textContent)
+          : '';
       }
 
       const li = document.createElement('li');
@@ -109,7 +117,9 @@
       try {
         await navigator.clipboard.writeText(text);
         btn.textContent = 'تم النسخ';
-        setTimeout(() => { btn.textContent = 'نسخ'; }, 1200);
+        setTimeout(() => {
+          btn.textContent = 'نسخ';
+        }, 1200);
       } catch {
         // best-effort
       }
@@ -122,14 +132,17 @@
 
     el.classList.add('md-content');
     el.setAttribute('aria-busy', 'true');
-    el.innerHTML = '<div class="md-loading"><div class="md-loading-text">جارٍ تحميل المحتوى…</div></div>';
+    el.innerHTML =
+      '<div class="md-loading"><div class="md-loading-text">جارٍ تحميل المحتوى…</div></div>';
 
     try {
       const res = await fetch(src, { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed to load');
       const md = await res.text();
 
-      const html = window.SimpleMarkdown ? window.SimpleMarkdown.render(md) : '';
+      const html = window.SimpleMarkdown
+        ? window.SimpleMarkdown.render(md)
+        : '';
       el.innerHTML = html;
 
       ensureTocToggle();

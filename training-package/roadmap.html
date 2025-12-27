@@ -1,84 +1,93 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>خريطة التعلم - GenAI Training Kit</title>
     <link rel="stylesheet" href="css/style.css" />
-</head>
-<body data-password-delay="0">
+  </head>
+  <body data-password-delay="0">
     <div id="passwordModal" class="password-modal">
-        <div class="password-container">
-            <h1>🔐 الدخول للمحتوى</h1>
-            <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
-            <input type="password" id="passwordInput" class="password-input" placeholder="أدخل رمز الدخول" autocomplete="off" />
-            <button id="passwordBtn" class="password-btn">متابعة</button>
-            <div id="errorMessage" class="error-message"></div>
-        </div>
+      <div class="password-container">
+        <h1>🔐 الدخول للمحتوى</h1>
+        <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="أدخل رمز الدخول"
+          autocomplete="off"
+        />
+        <button id="passwordBtn" class="password-btn">متابعة</button>
+        <div id="errorMessage" class="error-message"></div>
+      </div>
     </div>
 
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo"><span class="logo-text">🚀 GenAI Training Kit</span></div>
-            <ul class="nav-menu">
-                <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
-                <li><a href="resources.html" class="nav-link">المصادر</a></li>
-                <li><a href="intro.html" class="nav-link">الصفحة العامة</a></li>
-            </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="GenAI PowerUP Logo" style="height: 50px; margin-left: 10px; vertical-align: middle;">
+          <span class="logo-text">GenAI PowerUP</span>
         </div>
+        <ul class="nav-menu">
+          <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
+          <li><a href="resources.html" class="nav-link">المصادر</a></li>
+          <li><a href="intro.html" class="nav-link">الصفحة العامة</a></li>
+        </ul>
+      </div>
     </nav>
 
     <main class="page">
-        <div class="header">
-            <h1>🗺️ خريطة التعلم (30/60/90)</h1>
-            <p>مسار واضح لتثبيت المهارات وبناء نتائج داخل العمل (إصدار 2026).</p>
+      <div class="header">
+        <h1>🗺️ خريطة التعلم (30/60/90)</h1>
+        <p>مسار واضح لتثبيت المهارات وبناء نتائج داخل العمل (إصدار 2026).</p>
+      </div>
+
+      <section class="timeline">
+        <div class="step">
+          <div class="badge">أول 30 يوم</div>
+          <h3>تثبيت الأساسيات</h3>
+          <ul>
+            <li>اكتب 10 قوالب بروميبت جاهزة لعملك.</li>
+            <li>حوّل مستندين أسبوعياً إلى ملخصات تنفيذية.</li>
+            <li>أنشئ قالب بريد متابعة + قالب محضر اجتماع.</li>
+          </ul>
         </div>
 
-        <section class="timeline">
-            <div class="step">
-                <div class="badge">أول 30 يوم</div>
-                <h3>تثبيت الأساسيات</h3>
-                <ul>
-                    <li>اكتب 10 قوالب بروميبت جاهزة لعملك.</li>
-                    <li>حوّل مستندين أسبوعياً إلى ملخصات تنفيذية.</li>
-                    <li>أنشئ قالب بريد متابعة + قالب محضر اجتماع.</li>
-                </ul>
-            </div>
+        <div class="step">
+          <div class="badge">60 يوم</div>
+          <h3>نتائج قابلة للقياس</h3>
+          <ul>
+            <li>اختر 3 عمليات متكررة وابدأ تقليل وقتها.</li>
+            <li>ابنِ لوحة KPIs بسيطة (Excel/CSV) مع تعليق تنفيذي.</li>
+            <li>انشر دليل صغير لفريقك: أفضل القوالب.</li>
+          </ul>
+        </div>
 
-            <div class="step">
-                <div class="badge">60 يوم</div>
-                <h3>نتائج قابلة للقياس</h3>
-                <ul>
-                    <li>اختر 3 عمليات متكررة وابدأ تقليل وقتها.</li>
-                    <li>ابنِ لوحة KPIs بسيطة (Excel/CSV) مع تعليق تنفيذي.</li>
-                    <li>انشر دليل صغير لفريقك: أفضل القوالب.</li>
-                </ul>
-            </div>
+        <div class="step">
+          <div class="badge">90 يوم</div>
+          <h3>مشروع عملي داخل المؤسسة</h3>
+          <ul>
+            <li>نفّذ مشروع تخرج كامل بمخرجات قابلة للعرض.</li>
+            <li>اعمل تقييم قبل/بعد (Time saved / Quality).</li>
+            <li>جهّز خطة توسع (Rollout) لفريق/قسم إضافي.</li>
+          </ul>
+        </div>
+      </section>
 
-            <div class="step">
-                <div class="badge">90 يوم</div>
-                <h3>مشروع عملي داخل المؤسسة</h3>
-                <ul>
-                    <li>نفّذ مشروع تخرج كامل بمخرجات قابلة للعرض.</li>
-                    <li>اعمل تقييم قبل/بعد (Time saved / Quality).</li>
-                    <li>جهّز خطة توسع (Rollout) لفريق/قسم إضافي.</li>
-                </ul>
-            </div>
-        </section>
+      <section class="md-layout" aria-label="تفاصيل خريطة التعلم">
+        <aside id="toc" class="md-toc" aria-label="فهرس الصفحة"></aside>
+        <article data-md-src="content/roadmap.md"></article>
+      </section>
 
-        <section class="md-layout" aria-label="تفاصيل خريطة التعلم">
-            <aside id="toc" class="md-toc" aria-label="فهرس الصفحة"></aside>
-            <article data-md-src="content/roadmap.md"></article>
-        </section>
-
-        <footer class="page-footer">
-            &copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.
-        </footer>
+      <footer class="page-footer">
+        &copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.
+      </footer>
     </main>
 
     <script src="js/nav.js"></script>
     <script src="js/protection.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/md-page.js"></script>
-</body>
+  </body>
 </html>

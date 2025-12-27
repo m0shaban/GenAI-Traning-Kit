@@ -1,297 +1,350 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الأجندة التدريبية - حقيبة GenAI</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-password-delay="0">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-password-delay="0">
     <!-- ==================== Password Modal ==================== -->
     <div id="passwordModal" class="password-modal">
-        <div class="password-container">
-            <h1>🔐 الدخول للمحتوى</h1>
-            <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
-            <input type="password" id="passwordInput" class="password-input" placeholder="أدخل رمز الدخول" autocomplete="off" />
-            <button id="passwordBtn" class="password-btn">متابعة</button>
-            <div id="errorMessage" class="error-message"></div>
-        </div>
-
+      <div class="password-container">
+        <h1>🔐 الدخول للمحتوى</h1>
+        <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="أدخل رمز الدخول"
+          autocomplete="off"
+        />
+        <button id="passwordBtn" class="password-btn">متابعة</button>
+        <div id="errorMessage" class="error-message"></div>
+      </div>
     </div>
 
-
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo"><span class="logo-text">🚀 GenAI Training Kit</span></div>
-            <ul class="nav-menu">
-                <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
-                <li><a href="presentations.html" class="nav-link">العروض</a></li>
-                <li><a href="intro.html" class="nav-link">الصفحة العامة</a></li>
-            </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="GenAI PowerUP Logo" style="height: 50px; margin-left: 10px; vertical-align: middle;">
+          <span class="logo-text">GenAI PowerUP</span>
         </div>
+        <ul class="nav-menu">
+          <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
+          <li><a href="presentations.html" class="nav-link">العروض</a></li>
+          <li><a href="intro.html" class="nav-link">الصفحة العامة</a></li>
+        </ul>
+      </div>
     </nav>
 
     <main class="page">
-        <header class="page-header">
-            <h1>📅 الأجندة التدريبية</h1>
-            <p>تفاصيل الجلسات والأنشطة العملية خلال أيام البرنامج.</p>
-        </header>
+      <header class="page-header">
+        <h1>📅 الأجندة التدريبية</h1>
+        <p>تفاصيل الجلسات والأنشطة العملية خلال أيام البرنامج.</p>
+      </header>
 
-        <div class="agenda-container">
-            <div class="day-section day-3">
-                <h2 class="day-title">
-                    <span class="day-title-icon">📊</span>
-                    اليوم الثالث: التحليل والأتمتة بدون كود
-                </h2>
+      <div class="agenda-container">
+        <div class="day-section day-3">
+          <h2 class="day-title">
+            <span class="day-title-icon">📊</span>
+            اليوم الثالث: التحليل والأتمتة بدون كود
+          </h2>
 
-                <div class="day-objective">
-                    <div class="objective-label">🎯 الهدف اليومي</div>
-                    <div class="objective-text">إتقان تحليل البيانات والأتمتة الذكية بدون الحاجة لكود البرمجة</div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-time">9:00 - 10:15 ص (75 دقيقة)</div>
-                    <div class="session-title">الجلسة الأولى: منصة التحليل الذكي</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>Julius.ai و Rows.com لتحليل Excel بدون معادلات</li>
-                            <li>رفع ملف مبيعات واستخراج الرؤى تلقائياً</li>
-                            <li>لوحة معلومات مباشرة</li>
-                            <li>تصدير النتائج إلى Google Slides</li>
-                            <li>15 سؤال جاهز يعمل على أي ملف CSV</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-time">10:15 - 11:00 ص (45 دقيقة)</div>
-                    <div class="session-title">الجلسة الثانية: التنبؤ البسيط بالذكاء الاصطناعي</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>Obviously.ai لبناء نموذج تنبؤ بالمبيعات</li>
-                            <li>مفهوم Overfitting بلغة مبسطة</li>
-                            <li>تحميل النتائج كملف PDF إرشادي</li>
-                            <li>مقارنة الدقة مع نماذج Excel التقليدية</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="session-block is-break">
-                    <div class="session-label is-break">استراحة غداء</div>
-                    <div class="session-time">11:00 - 11:45 ص (45 دقيقة)</div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-time">11:45 - 1:00 م (75 دقيقة)</div>
-                    <div class="session-title">الجلسة الثالثة: أتمتة سير العمل اليومية</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>ربط Gmail و Google Sheets و Slack عبر Zapier و Make</li>
-                            <li>مثال عملي: استلام طلب عميل وتسجيله وإشعار الفريق</li>
-                            <li>تقليل الوقت من 15 دقيقة إلى 1 دقيقة</li>
-                            <li>Template جاهز للنسخ</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-time">1:00 - 2:00 م (60 دقيقة)</div>
-                    <div class="session-title">الجلسة الرابعة: إنشاء تقارير دورية دون تدخل</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>Microsoft Power Automate لاستخراج تقرير أسبوعي</li>
-                            <li>إرسال التقرير عبر Teams تلقائياً</li>
-                            <li>تخصيص النموذج بلغة عربية صحيحة</li>
-                            <li>إضافة شروط IF لتجنب الأخطاء</li>
-                            <li>حفظ التقرير تلقائياً في SharePoint</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-time">2:00 - 2:45 م (45 دقيقة)</div>
-                    <div class="session-title">الجلسة الخامسة: لوحة قرارات المديرين</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>لوحة معلومات Notion متكاملة</li>
-                            <li>جمع بيانات المبيعات والمخزون والموارد البشرية</li>
-                            <li>AI Block لطرح أسئلة بالعربية</li>
-                            <li>تحديث تلقائي كل ساعة عبر API</li>
-                            <li>تصدير ملف PDF تفاعلي للجوال</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="session-block is-tip-cyan">
-                    <div class="session-label is-tip-cyan">⭐ Pro Tip اليوم</div>
-                    <div class="session-time">2:45 - 3:00 م (15 دقيقة): الروبوت الظاهري</div>
-                    <div class="session-content">
-                        <ul>
-                            <li>Relay.app لإنشاء روبوت يعمل ليلاً</li>
-                            <li>جدولة التشغيل الساعة 2 صباحاً</li>
-                            <li>إرسال ملخص الصباح</li>
-                            <li>توفير 70% من التكاليف</li>
-                            <li>إشعارات SMS عند حدوث خطأ</li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="day-objective">
+            <div class="objective-label">🎯 الهدف اليومي</div>
+            <div class="objective-text">
+              إتقان تحليل البيانات والأتمتة الذكية بدون الحاجة لكود البرمجة
             </div>
-            <!-- ===== DAY 4 ===== -->
-            <div class="day-section day-4">
-            <h2 class="day-title">
-                <span class="day-title-icon">🚀</span>
-                اليوم الرابع: الدمج والأخلاقيات والمستقبل
-            </h2>
+          </div>
 
-            <div class="day-objective">
-                <div class="objective-label">🎯 الهدف اليومي</div>
-                <div class="objective-text">دمج كل المهارات + بناء حلول شاملة + فهم الأخلاقيات والمستقبل</div>
+          <div class="session-block">
+            <div class="session-time">9:00 - 10:15 ص (75 دقيقة)</div>
+            <div class="session-title">الجلسة الأولى: منصة التحليل الذكي</div>
+            <div class="session-content">
+              <ul>
+                <li>Julius.ai و Rows.com لتحليل Excel بدون معادلات</li>
+                <li>رفع ملف مبيعات واستخراج الرؤى تلقائياً</li>
+                <li>لوحة معلومات مباشرة</li>
+                <li>تصدير النتائج إلى Google Slides</li>
+                <li>15 سؤال جاهز يعمل على أي ملف CSV</li>
+              </ul>
             </div>
+          </div>
 
-            <div class="session-block">
-                <div class="session-time">9:00 - 10:00 ص (60 دقيقة)</div>
-                <div class="session-title">الجلسة الأولى: بناء سير عمل متكامل</div>
-                <div class="session-content">
-                    <ul>
-                        <li>ربط ChatGPT + Midjourney + Gamma + Zapier في مسار واحد</li>
-                        <li>فكرة تسويقية تولد صورة وفيديو وعرض وتنشر خلال 10 دقائق</li>
-                        <li>حسابات API متصلة مسبقاً</li>
-                        <li>ملف JSON جاهز للنسخ</li>
-                    </ul>
-                </div>
+          <div class="session-block">
+            <div class="session-time">10:15 - 11:00 ص (45 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الثانية: التنبؤ البسيط بالذكاء الاصطناعي
             </div>
+            <div class="session-content">
+              <ul>
+                <li>Obviously.ai لبناء نموذج تنبؤ بالمبيعات</li>
+                <li>مفهوم Overfitting بلغة مبسطة</li>
+                <li>تحميل النتائج كملف PDF إرشادي</li>
+                <li>مقارنة الدقة مع نماذج Excel التقليدية</li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="session-block">
-                <div class="session-time">10:00 - 10:45 ص (45 دقيقة)</div>
-                <div class="session-title">الجلسة الثانية: نماذج اللغة الكبيرة المفتوحة</div>
-                <div class="session-content">
-                    <ul>
-                        <li>Llama-3 و Falcon واستخدامها محلياً</li>
-                        <li>Ollama للتثبيت المحلي</li>
-                        <li>مزايا الخصوصية الكاملة</li>
-                        <li>خطوات التثبيت خلال 5 دقائق</li>
-                        <li>مقارنة الأداء مع نماذج السحابة</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="session-block is-break">
+            <div class="session-label is-break">استراحة غداء</div>
+            <div class="session-time">11:00 - 11:45 ص (45 دقيقة)</div>
+          </div>
 
-            <div class="session-block is-break">
-                <div class="session-label is-break">استراحة غداء</div>
-                <div class="session-time">10:45 - 11:30 ص (45 دقيقة)</div>
+          <div class="session-block">
+            <div class="session-time">11:45 - 1:00 م (75 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الثالثة: أتمتة سير العمل اليومية
             </div>
+            <div class="session-content">
+              <ul>
+                <li>ربط Gmail و Google Sheets و Slack عبر Zapier و Make</li>
+                <li>مثال عملي: استلام طلب عميل وتسجيله وإشعار الفريق</li>
+                <li>تقليل الوقت من 15 دقيقة إلى 1 دقيقة</li>
+                <li>Template جاهز للنسخ</li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="session-block">
-                <div class="session-time">11:30 - 12:30 م (60 دقيقة)</div>
-                <div class="session-title">الجلسة الثالثة: الأخلاقيات والخصوصية</div>
-                <div class="session-content">
-                    <ul>
-                        <li>قانون PDPL السعودي وتأثيره على AI</li>
-                        <li>قائمة تحقق لمراجعة البيانات قبل الرفع</li>
-                        <li>حذف السجلات من ChatGPT</li>
-                        <li>استخدام وضعية Incognito</li>
-                        <li>سياسة AI داخلية جاهزة</li>
-                    </ul>
-                </div>
+          <div class="session-block">
+            <div class="session-time">1:00 - 2:00 م (60 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الرابعة: إنشاء تقارير دورية دون تدخل
             </div>
+            <div class="session-content">
+              <ul>
+                <li>Microsoft Power Automate لاستخراج تقرير أسبوعي</li>
+                <li>إرسال التقرير عبر Teams تلقائياً</li>
+                <li>تخصيص النموذج بلغة عربية صحيحة</li>
+                <li>إضافة شروط IF لتجنب الأخطاء</li>
+                <li>حفظ التقرير تلقائياً في SharePoint</li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="session-block">
-                <div class="session-time">12:30 - 1:30 م (60 دقيقة)</div>
-                <div class="session-title">الجلسة الرابعة: إدارة التغيير في المنشآت</div>
-                <div class="session-content">
-                    <ul>
-                        <li>نموذج ADKAR المبسّط</li>
-                        <li>إنشاء فريق مختص بالـ AI</li>
-                        <li>حساب ROI بسيط</li>
-                        <li>قصص نجاح عملية من بنك وشركة نفط</li>
-                    </ul>
-                </div>
+          <div class="session-block">
+            <div class="session-time">2:00 - 2:45 م (45 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الخامسة: لوحة قرارات المديرين
             </div>
+            <div class="session-content">
+              <ul>
+                <li>لوحة معلومات Notion متكاملة</li>
+                <li>جمع بيانات المبيعات والمخزون والموارد البشرية</li>
+                <li>AI Block لطرح أسئلة بالعربية</li>
+                <li>تحديث تلقائي كل ساعة عبر API</li>
+                <li>تصدير ملف PDF تفاعلي للجوال</li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="session-block">
-                <div class="session-time">1:30 - 2:15 م (45 دقيقة)</div>
-                <div class="session-title">الجلسة الخامسة: مستقبل الوظائف والمهارات</div>
-                <div class="session-content">
-                    <ul>
-                        <li>توقعات WEF حول الوظائف 2025-2030</li>
-                        <li>المهارات الـ 10 الأكثر طلباً</li>
-                        <li>خطة تطوير شخصي خلال 90 يوماً</li>
-                        <li>مسارات تعليمية مجانية (Coursera, edX)</li>
-                    </ul>
-                </div>
+          <div class="session-block is-tip-cyan">
+            <div class="session-label is-tip-cyan">⭐ Pro Tip اليوم</div>
+            <div class="session-time">
+              2:45 - 3:00 م (15 دقيقة): الروبوت الظاهري
             </div>
+            <div class="session-content">
+              <ul>
+                <li>Relay.app لإنشاء روبوت يعمل ليلاً</li>
+                <li>جدولة التشغيل الساعة 2 صباحاً</li>
+                <li>إرسال ملخص الصباح</li>
+                <li>توفير 70% من التكاليف</li>
+                <li>إشعارات SMS عند حدوث خطأ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- ===== DAY 4 ===== -->
+        <div class="day-section day-4">
+          <h2 class="day-title">
+            <span class="day-title-icon">🚀</span>
+            اليوم الرابع: الدمج والأخلاقيات والمستقبل
+          </h2>
 
-            <div class="session-block is-tip-green">
-                <div class="session-label is-tip-green">⭐ Pro Tip اليوم</div>
-                <div class="session-time">2:15 - 2:45 م (30 دقيقة): الذكاء الاصطناعي الشخصي</div>
-                <div class="session-content">
-                    <ul>
-                        <li>مساعد خاص بك في Poe باسم الشركة</li>
-                        <li>تدريبه على 50 وثيقة داخلية</li>
-                        <li>إتاحته للموظفين برابط خاص</li>
-                        <li>تحديث أسبوعي تلقائي من Google Drive</li>
-                        <li>دليل صيانة شهرية</li>
-                    </ul>
-                </div>
+          <div class="day-objective">
+            <div class="objective-label">🎯 الهدف اليومي</div>
+            <div class="objective-text">
+              دمج كل المهارات + بناء حلول شاملة + فهم الأخلاقيات والمستقبل
             </div>
+          </div>
 
-            <div class="session-block is-closing">
-                <div class="session-label is-closing">🎓 الختام والشهادات</div>
-                <div class="session-time">2:45 - 3:00 م (15 دقيقة)</div>
-                <div class="session-content">
-                    <ul>
-                        <li>تلخيص أهم 3 نقط من كل يوم</li>
-                        <li>دعوة للمشاركة على LinkedIn بـ #GenAI4EGY</li>
-                        <li>توزيع الشهادات</li>
-                        <li>تحية بالنجاح المستمر</li>
-                    </ul>
-                </div>
+          <div class="session-block">
+            <div class="session-time">9:00 - 10:00 ص (60 دقيقة)</div>
+            <div class="session-title">الجلسة الأولى: بناء سير عمل متكامل</div>
+            <div class="session-content">
+              <ul>
+                <li>ربط ChatGPT + Midjourney + Gamma + Zapier في مسار واحد</li>
+                <li>فكرة تسويقية تولد صورة وفيديو وعرض وتنشر خلال 10 دقائق</li>
+                <li>حسابات API متصلة مسبقاً</li>
+                <li>ملف JSON جاهز للنسخ</li>
+              </ul>
             </div>
+          </div>
+
+          <div class="session-block">
+            <div class="session-time">10:00 - 10:45 ص (45 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الثانية: نماذج اللغة الكبيرة المفتوحة
             </div>
+            <div class="session-content">
+              <ul>
+                <li>Llama-3 و Falcon واستخدامها محلياً</li>
+                <li>Ollama للتثبيت المحلي</li>
+                <li>مزايا الخصوصية الكاملة</li>
+                <li>خطوات التثبيت خلال 5 دقائق</li>
+                <li>مقارنة الأداء مع نماذج السحابة</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="session-block is-break">
+            <div class="session-label is-break">استراحة غداء</div>
+            <div class="session-time">10:45 - 11:30 ص (45 دقيقة)</div>
+          </div>
+
+          <div class="session-block">
+            <div class="session-time">11:30 - 12:30 م (60 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الثالثة: الأخلاقيات والخصوصية
+            </div>
+            <div class="session-content">
+              <ul>
+                <li>قانون PDPL السعودي وتأثيره على AI</li>
+                <li>قائمة تحقق لمراجعة البيانات قبل الرفع</li>
+                <li>حذف السجلات من ChatGPT</li>
+                <li>استخدام وضعية Incognito</li>
+                <li>سياسة AI داخلية جاهزة</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="session-block">
+            <div class="session-time">12:30 - 1:30 م (60 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الرابعة: إدارة التغيير في المنشآت
+            </div>
+            <div class="session-content">
+              <ul>
+                <li>نموذج ADKAR المبسّط</li>
+                <li>إنشاء فريق مختص بالـ AI</li>
+                <li>حساب ROI بسيط</li>
+                <li>قصص نجاح عملية من بنك وشركة نفط</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="session-block">
+            <div class="session-time">1:30 - 2:15 م (45 دقيقة)</div>
+            <div class="session-title">
+              الجلسة الخامسة: مستقبل الوظائف والمهارات
+            </div>
+            <div class="session-content">
+              <ul>
+                <li>توقعات WEF حول الوظائف 2025-2030</li>
+                <li>المهارات الـ 10 الأكثر طلباً</li>
+                <li>خطة تطوير شخصي خلال 90 يوماً</li>
+                <li>مسارات تعليمية مجانية (Coursera, edX)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="session-block is-tip-green">
+            <div class="session-label is-tip-green">⭐ Pro Tip اليوم</div>
+            <div class="session-time">
+              2:15 - 2:45 م (30 دقيقة): الذكاء الاصطناعي الشخصي
+            </div>
+            <div class="session-content">
+              <ul>
+                <li>مساعد خاص بك في Poe باسم الشركة</li>
+                <li>تدريبه على 50 وثيقة داخلية</li>
+                <li>إتاحته للموظفين برابط خاص</li>
+                <li>تحديث أسبوعي تلقائي من Google Drive</li>
+                <li>دليل صيانة شهرية</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="session-block is-closing">
+            <div class="session-label is-closing">🎓 الختام والشهادات</div>
+            <div class="session-time">2:45 - 3:00 م (15 دقيقة)</div>
+            <div class="session-content">
+              <ul>
+                <li>تلخيص أهم 3 نقط من كل يوم</li>
+                <li>دعوة للمشاركة على LinkedIn بـ #GenAI4EGY</li>
+                <li>توزيع الشهادات</li>
+                <li>تحية بالنجاح المستمر</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <!-- Practical Activities Section -->
-            <div class="activity-section">
-            <h3 class="activity-title">🎯 الأنشطة العملية في جميع الأيام</h3>
-            
-            <div class="activity-grid">
-                <div class="session-block">
-                    <div class="activity-item-title is-primary">📌 نشاط اليوم الأول: سباق الـ 30 دقيقة</div>
-                    <div class="session-content">
-                        <p>فريقان يختاران مشكلة إدارية ويستخدمان R-T-F و C-A-R لحلها. تسليم حلول مطبوعة والتصويت على الأفضل. الفائز يحصل على اشتراك شهر مجاني في Poe Pro</p>
-                    </div>
-                </div>
+        <div class="activity-section">
+          <h3 class="activity-title">🎯 الأنشطة العملية في جميع الأيام</h3>
 
-                <div class="session-block">
-                    <div class="activity-item-title is-pink">📌 نشاط اليوم الثاني: إطلاق حملة افتراضية</div>
-                    <div class="session-content">
-                        <p>فرق متعددة التخصصات تطلق منتجاً افتراضياً خلال 45 دقيقة مع 3 إعلانات + 2 تصميم + عرض 5 شرائح. الفائز يحصل على اشتراك Midjourney شهر</p>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="activity-item-title is-blue">📌 نشاط اليوم الثالث: تحدٍّ الأتمتة</div>
-                    <div class="session-content">
-                        <p>كل فريق يختار عملية مكررة ويصمم سير عمل كامل خلال 60 دقيقة. تقديم Flowchart والنتيجة. الفريق بأعلى توفير وقت يحصل على اشتراك Make Pro</p>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="activity-item-title is-green">📌 المشروع الختامي: خطة GenAI 100 يوم</div>
-                    <div class="session-content">
-                        <p>كل فريق يقدم خطة 100 يوم لإدخال GenAI في قسمه مع عرض تقديمي 7 شرائح وورقة عمل Excel للتكلفة والعائد</p>
-                    </div>
-                </div>
+          <div class="activity-grid">
+            <div class="session-block">
+              <div class="activity-item-title is-primary">
+                📌 نشاط اليوم الأول: سباق الـ 30 دقيقة
+              </div>
+              <div class="session-content">
+                <p>
+                  فريقان يختاران مشكلة إدارية ويستخدمان R-T-F و C-A-R لحلها.
+                  تسليم حلول مطبوعة والتصويت على الأفضل. الفائز يحصل على اشتراك
+                  شهر مجاني في Poe Pro
+                </p>
+              </div>
             </div>
-        </div>
 
-        </div>
+            <div class="session-block">
+              <div class="activity-item-title is-pink">
+                📌 نشاط اليوم الثاني: إطلاق حملة افتراضية
+              </div>
+              <div class="session-content">
+                <p>
+                  فرق متعددة التخصصات تطلق منتجاً افتراضياً خلال 45 دقيقة مع 3
+                  إعلانات + 2 تصميم + عرض 5 شرائح. الفائز يحصل على اشتراك
+                  Midjourney شهر
+                </p>
+              </div>
+            </div>
 
-        <footer class="simple-footer">
-            <p>📧 للاستفسارات والمتابعة المستمرة</p>
-            <p>&copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.</p>
-        </footer>
+            <div class="session-block">
+              <div class="activity-item-title is-blue">
+                📌 نشاط اليوم الثالث: تحدٍّ الأتمتة
+              </div>
+              <div class="session-content">
+                <p>
+                  كل فريق يختار عملية مكررة ويصمم سير عمل كامل خلال 60 دقيقة.
+                  تقديم Flowchart والنتيجة. الفريق بأعلى توفير وقت يحصل على
+                  اشتراك Make Pro
+                </p>
+              </div>
+            </div>
+
+            <div class="session-block">
+              <div class="activity-item-title is-green">
+                📌 المشروع الختامي: خطة GenAI 100 يوم
+              </div>
+              <div class="session-content">
+                <p>
+                  كل فريق يقدم خطة 100 يوم لإدخال GenAI في قسمه مع عرض تقديمي 7
+                  شرائح وورقة عمل Excel للتكلفة والعائد
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="simple-footer">
+        <p>📧 للاستفسارات والمتابعة المستمرة</p>
+        <p>&copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.</p>
+      </footer>
     </main>
 
     <script src="js/nav.js"></script>
     <script src="js/protection.js"></script>
-</body>
+  </body>
 </html>
