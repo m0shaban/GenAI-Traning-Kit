@@ -2,22 +2,29 @@
 class DynamicPasswordGenerator {
     static generate() {
         const now = new Date();
-        // Format: 6 + DDMMYY + HH (date + hour)
-        const day = String(now.getDate()).padStart(2, '0');
+        // Format: 6 + MMDDYYYY (month/day/year)
         const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = String(now.getFullYear()).slice(-2);
-        const hour = String(now.getHours()).padStart(2, '0');
-        
-        return `6${day}${month}${year}${hour}`;
+        const day = String(now.getDate()).padStart(2, '0');
+        const year = String(now.getFullYear());
+
+        return `6${month}${day}${year}`;
+    }
+
+    static normalize(input) {
+        return String(input || '').replace(/\D/g, '');
     }
 }
 
 const CONFIG = {
     CONTENT_PASSWORD: () => DynamicPasswordGenerator.generate(),
     COPY_PASSWORD: 'protect2024',
-    PASSWORD_DELAY: 10000, // 10 seconds
+    PASSWORD_DELAY: 0,
     MAX_PASSWORD_ATTEMPTS: 5
 };
+
+function isCopyProtectionEnabled() {
+    return document.body?.dataset?.enableCopyProtection === '1';
+}
 
 // ==================== State Management ====================
 const state = {
@@ -34,15 +41,28 @@ class PasswordManager {
         this.input = document.getElementById('passwordInput');
         this.btn = document.getElementById('passwordBtn');
         this.errorMsg = document.getElementById('errorMessage');
-        
+
         this.init();
     }
 
     init() {
+        if (!this.modal || !this.input || !this.btn) return;
+
+        // If already verified in this session, don't prompt again
+        try {
+            if (sessionStorage.getItem('gk_access') === '1') {
+                state.passwordVerified = true;
+                this.hidePasswordModal();
+                return;
+            }
+        } catch (_) {
+            // ignore
+        }
+
         // Show password modal after delay
-        setTimeout(() => {
-            this.showPasswordModal();
-        }, CONFIG.PASSWORD_DELAY);
+        const delayAttr = document.body?.dataset?.passwordDelay;
+        const delay = Number.isFinite(Number(delayAttr)) ? Number(delayAttr) : CONFIG.PASSWORD_DELAY;
+        setTimeout(() => this.showPasswordModal(), Math.max(0, delay));
 
         // Event listeners
         this.btn.addEventListener('click', () => this.verifyPassword());
@@ -62,13 +82,26 @@ class PasswordManager {
 
     verifyPassword() {
         const password = this.input.value.trim();
-        const correctPassword = CONFIG.CONTENT_PASSWORD(); // Call function to get dynamic password
+        const entered = DynamicPasswordGenerator.normalize(password);
+        const expected = DynamicPasswordGenerator.normalize(CONFIG.CONTENT_PASSWORD());
 
-        if (password === correctPassword) {
+        if (entered === expected) {
             state.passwordVerified = true;
+            try {
+                sessionStorage.setItem('gk_access', '1');
+            } catch (_) {
+                // ignore
+            }
             this.hidePasswordModal();
             this.input.value = '';
             this.showNotification('✓ تم التحقق بنجاح!');
+
+            const redirectTo = document.body?.dataset?.redirectTo;
+            if (redirectTo) {
+                setTimeout(() => {
+                    location.href = redirectTo;
+                }, 250);
+            }
         } else {
             state.passwordAttempts++;
             this.showError('كلمة المرور غير صحيحة!');
@@ -109,11 +142,12 @@ class CopyProtection {
         this.modal = document.getElementById('copyProtectionModal');
         this.input = document.getElementById('copyProtectionInput');
         this.btn = document.getElementById('copyProtectionBtn');
-        
+
         this.init();
     }
 
     init() {
+        if (!this.modal || !this.input || !this.btn) return;
         // Disable copy initially
         document.addEventListener('copy', (e) => this.handleCopy(e));
         document.addEventListener('contextmenu', (e) => this.handleContextMenu(e));
@@ -190,6 +224,7 @@ class CopyProtection {
 // ==================== Content Protection ====================
 class ContentProtection {
     static protectPage() {
+        if (document.body?.dataset?.disableContentProtection === '1') return;
         // Disable developer tools shortcuts
         document.addEventListener('keydown', (e) => {
             // F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
@@ -203,25 +238,15 @@ class ContentProtection {
             }
         });
 
-        // Disable right-click context menu unless verified
+        // Disable right-click context menu when copy protection is enabled
         document.addEventListener('contextmenu', (e) => {
-            if (!state.copyProtectionVerified) {
+            if (isCopyProtectionEnabled() && !state.copyProtectionVerified) {
                 e.preventDefault();
             }
         });
 
-        // Prevent selection drag unless verified
-        document.addEventListener('selectstart', (e) => {
-            if (!state.copyProtectionVerified) {
-                // Allow selection but protect copying
-            }
-        });
-
-        // Prevent text selection via CSS (will be overridden when verified)
-        if (!state.copyProtectionVerified) {
-            document.body.style.userSelect = 'none';
-            document.body.style.webkitUserSelect = 'none';
-        }
+        // Do not block selection by default (keep learning UX usable)
+        // If copy protection is enabled and verified, allow interaction explicitly.
     }
 
     static allowContentInteraction() {
@@ -304,7 +329,7 @@ function copyToClipboard(text) {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize managers
     const passwordManager = new PasswordManager();
-    const copyProtection = new CopyProtection();
+    const copyProtection = isCopyProtectionEnabled() ? new CopyProtection() : null;
     
     // Protect content
     ContentProtection.protectPage();
@@ -313,26 +338,24 @@ document.addEventListener('DOMContentLoaded', () => {
     AnimationManager.observeElements();
     AnimationManager.initScrollEffects();
 
-    // Check if password verified and update UI accordingly
-    const observer = setInterval(() => {
-        if (state.copyProtectionVerified) {
-            ContentProtection.allowContentInteraction();
-        }
-    }, 100);
+    // If copy protection is enabled and later verified, allow full interaction
+    if (isCopyProtectionEnabled()) {
+        const observer = setInterval(() => {
+            if (state.copyProtectionVerified) {
+                ContentProtection.allowContentInteraction();
+            }
+        }, 150);
 
-    // Cleanup
-    window.addEventListener('unload', () => {
-        clearInterval(observer);
-    });
+        window.addEventListener('unload', () => {
+            clearInterval(observer);
+        });
+    }
 
-    // Log initialization
-    console.log('%c🎓 GenAI Training Kit', 'font-size: 20px; color: #667eea; font-weight: bold;');
-    console.log('حقيبة تدريبية حديثة في الذكاء الاصطناعي');
 });
 
 // ==================== Service Worker Registration ====================
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {
         // Service worker not available or failed to load
     });
 }

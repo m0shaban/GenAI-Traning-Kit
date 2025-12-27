@@ -1,13 +1,30 @@
 // Service Worker for GenAI Training Kit
 // يوفر دعم الوضع غير المتصل (Offline) والتخزين المؤقت
 
-const CACHE_NAME = 'genai-training-kit-v2';
+const CACHE_NAME = 'genai-training-kit-v3';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/protection.js',
-  '/config.json'
+  './',
+  './index.html',
+  './dashboard.html',
+  './cases.html',
+  './exercises.html',
+  './tools.html',
+  './prompts.html',
+  './projects.html',
+  './resources.html',
+  './roadmap.html',
+  './css/style.css',
+  './js/protection.js',
+  './js/markdown.js',
+  './js/md-page.js',
+  './content/cases.md',
+  './content/exercises.md',
+  './content/roadmap.md',
+  './content/tools.md',
+  './content/prompts.md',
+  './content/projects.md',
+  './content/resources.md',
+  './config.json'
 ];
 
 // Install Event
@@ -15,12 +32,9 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('✓ Service Worker installed');
         return cache.addAll(urlsToCache);
       })
-      .catch((error) => {
-        console.error('✗ Service Worker install failed:', error);
-      })
+      .catch(() => {})
   );
 });
 
@@ -31,7 +45,6 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('✓ Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -76,33 +89,17 @@ self.addEventListener('fetch', (event) => {
       })
       .catch(() => {
         // Return offline page if available
-        return caches.match('/index.html');
+        return caches.match('./index.html');
       })
   );
-});
-
-// Background Sync
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-data') {
-    event.waitUntil(
-      fetch('/api/sync')
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('✓ Data synced:', data);
-        })
-        .catch((error) => {
-          console.error('✗ Sync failed:', error);
-        })
-    );
-  }
 });
 
 // Push Notifications
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data.text(),
-    icon: '/assets/icon-192x192.png',
-    badge: '/assets/badge-72x72.png',
+    icon: './assets/icon-192x192.png',
+    badge: './assets/badge-72x72.png',
     tag: 'genai-notification',
     requireInteraction: false
   };
@@ -119,15 +116,11 @@ self.addEventListener('notificationclick', (event) => {
     clients.matchAll({ type: 'window' }).then((clientList) => {
       for (let i = 0; i < clientList.length; i++) {
         const client = clientList[i];
-        if (client.url === '/' && 'focus' in client) {
-          return client.focus();
-        }
+        if ('focus' in client) return client.focus();
       }
       if (clients.openWindow) {
-        return clients.openWindow('/');
+        return clients.openWindow('./');
       }
     })
   );
 });
-
-console.log('%c✓ Service Worker Ready', 'color: #10b981; font-weight: bold; font-size: 14px;');

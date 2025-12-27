@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حالات دراسية واقعية - GenAI Training Kit</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-password-delay="0">
+    <div id="passwordModal" class="password-modal">
+        <div class="password-container">
+            <h1>🔐 الدخول للمحتوى</h1>
+            <p>الرجاء إدخال رمز الدخول للمتابعة.</p>
+            <input type="password" id="passwordInput" class="password-input" placeholder="أدخل رمز الدخول" autocomplete="off" />
+            <button id="passwordBtn" class="password-btn">متابعة</button>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><span class="logo-text">🚀 GenAI Training Kit</span></div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link">لوحة التحكم</a></li>
+                <li><a href="agenda.html" class="nav-link">الأجندة</a></li>
+                <li><a href="intro.html" class="nav-link">الصفحة العامة</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page">
+        <div class="header">
+            <h1>📌 حالات دراسية واقعية</h1>
+            <p>أمثلة تطبيقية جاهزة للاستخدام داخل العمل (إصدار 2026).</p>
+        </div>
+
+        <section class="grid">
+            <div class="card">
+                <div class="tag">عمليات</div>
+                <h3>تسليم النوبة (Shift Handover)</h3>
+                <ul>
+                    <li>المدخلات: ملاحظات التشغيل + أحداث + قراءات أساسية.</li>
+                    <li>المخرجات: ملخص تنفيذي + مخاطر + توصيات فورية.</li>
+                    <li>القيمة: تقليل الأخطاء وتحسين الاستمرارية بين الفرق.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="tag">HSE</div>
+                <h3>تحليل حادث/شبه حادث</h3>
+                <ul>
+                    <li>المدخلات: وصف الواقعة + صور/ملفات + شهادات.</li>
+                    <li>المخرجات: 5 Whys + إجراءات تصحيحية (CAPA) + منع تكرار.</li>
+                    <li>القيمة: تحويل الحادث إلى تعلم مؤسسي سريع.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="tag">مشتريات</div>
+                <h3>تلخيص عطاءات ومقارنة عروض</h3>
+                <ul>
+                    <li>المدخلات: عروض الموردين + شروط التسليم + SLA.</li>
+                    <li>المخرجات: جدول مقارنة + توصية + نقاط تفاوض.</li>
+                    <li>القيمة: قرار أسرع وشفافية أعلى.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="tag">صيانة</div>
+                <h3>خطة صيانة مبنية على بيانات</h3>
+                <ul>
+                    <li>المدخلات: تاريخ الأعطال + ساعات تشغيل + قطع غيار.</li>
+                    <li>المخرجات: أولويات + خطة أسبوعية + مؤشرات متابعة.</li>
+                    <li>القيمة: تقليل Downtime وتحسين جاهزية المعدات.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="md-layout" aria-label="الدليل الكامل للحالات الدراسية">
+            <aside id="toc" class="md-toc" aria-label="فهرس الصفحة"></aside>
+            <article data-md-src="content/cases.md"></article>
+        </section>
+
+        <footer class="page-footer">
+            &copy; 2026 GenAI Training Kit. جميع الحقوق محفوظة.
+        </footer>
+    </main>
+
+    <script src="js/nav.js"></script>
+    <script src="js/protection.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/md-page.js"></script>
+</body>
+</html>
