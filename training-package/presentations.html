@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العرض التقديمي - حقيبة GenAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pdf-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .pdf-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pdf-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pdf-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pdf-option {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .pdf-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .pdf-option-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-option-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .pdf-option-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-pdf {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .pdf-viewer {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .pdf-viewer.active {
+            display: block;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .pdf-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .pdf-controls button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-controls button:hover {
+            background: var(--secondary-color);
+        }
+
+        .pdf-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .pdf-container {
+                padding: 1rem;
+            }
+
+            .pdf-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .pdf-options {
+                grid-template-columns: 1fr;
+            }
+
+            .pdf-viewer iframe {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">🚀 GenAI Training Kit</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="intro.html" class="nav-link">معلومات المحتوى</a></li>
+                <li><a href="agenda.html" class="nav-link">الأجندة</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pdf-container">
+        <div class="pdf-header">
+            <h1>📊 العرض التقديمي الكامل</h1>
+            <p style="color: var(--text-light); font-size: 1.1rem;">عروض تقديمية احترافية عن الذكاء الاصطناعي والأدوات المتاحة</p>
+        </div>
+
+        <!-- PDF Options -->
+        <div class="pdf-options">
+            <div class="pdf-option">
+                <div class="pdf-option-icon">📈</div>
+                <div class="pdf-option-title">تمكين الشركات بأدوات GenAI</div>
+                <div class="pdf-option-desc">العرض التقديمي الرئيسي الشامل عن تمكين المؤسسات باستخدام أدوات الذكاء الاصطناعي</div>
+                <button class="btn-pdf" onclick="viewPDF('../_local-docs/pdf-files/تمكين الشركات بأدوات GenAI.pdf', 'تمكين الشركات بأدوات GenAI')">عرض المستند</button>
+            </div>
+
+            <div class="pdf-option">
+                <div class="pdf-option-icon">🤖</div>
+                <div class="pdf-option-title">دليل 101 أداة الذكاء الاصطناعي</div>
+                <div class="pdf-option-desc">دليل شامل يتضمن 101 أداة AI مع شرح الاستخدام والتسعير والمميزات</div>
+                <button class="btn-pdf" onclick="viewPDF('../_local-docs/pdf-files/دليل_101_أدوات_الذكاء_الاصطناعي_للشركات.pdf', 'دليل 101 أداة')">عرض المستند</button>
+            </div>
+
+            <div class="pdf-option">
+                <div class="pdf-option-icon">💡</div>
+                <div class="pdf-option-title">أدوات الذكاء الاصطناعي للشركات</div>
+                <div class="pdf-option-desc">دليل متخصص يركز على الأدوات الأكثر استخداماً في بيئة العمل الشركاتية</div>
+                <button class="btn-pdf" onclick="viewPDF('../_local-docs/pdf-files/أدوات_الذكاء_الاصطناعي_للشركات.pdf', 'أدوات AI للشركات')">عرض المستند</button>
+            </div>
+
+            <div class="pdf-option">
+                <div class="pdf-option-icon">✨</div>
+                <div class="pdf-option-title">برومبتات متقدمة وإبداعية</div>
+                <div class="pdf-option-desc">مجموعة متقدمة من الأوامر الإبداعية والمتخصصة للحصول على أفضل النتائج</div>
+                <button class="btn-pdf" onclick="viewPDF('../_local-docs/pdf-files/13-برومبتات-متقدمة-ابداعية-نهائي.pdf', 'برومبتات متقدمة')">عرض المستند</button>
+            </div>
+        </div>
+
+        <!-- PDF Viewer -->
+        <div id="pdfViewer" class="pdf-viewer">
+            <div class="pdf-controls">
+                <div class="pdf-title" id="pdfTitle">عرض المستند</div>
+                <button onclick="closePDF()">× إغلاق</button>
+            </div>
+            <iframe id="pdfFrame" src="" type="application/pdf"></iframe>
+        </div>
+
+        <!-- Info Section -->
+        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%); padding: 2rem; border-radius: 1rem; margin-top: 2rem; border-left: 4px solid var(--primary-color);">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💡 نصائح للاستفادة الأقصى</h3>
+            <ul style="color: var(--text-light); line-height: 1.8; padding-right: 1.5rem;">
+                <li>📌 استخدم وظيفة البحث (Ctrl+F) للعثور على مواضيع محددة</li>
+                <li>🖨️ يمكنك طباعة المستند بالكامل أو جزء منه</li>
+                <li>💾 قم بتحميل المستندات على جهازك للرجوع إليها لاحقاً</li>
+                <li>📱 جميع المستندات متوافقة مع الهاتف الذكي</li>
+                <li>🔍 يمكنك التكبير والتصغير للقراءة بشكل أفضل</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+            <p style="color: var(--text-light);">
+                جميع المستندات متوفرة للعرض والتحميل والطباعة
+            </p>
+            <p style="color: var(--text-light); margin-top: 0.5rem; font-size: 0.9rem;">
+                &copy; 2024 GenAI Training Kit. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </div>
+
+    <!-- Include protection script -->
+    <script src="js/protection.js"></script>
+    <script>
+        function viewPDF(pdfPath, title) {
+            const pdfFrame = document.getElementById('pdfFrame');
+            const pdfTitle = document.getElementById('pdfTitle');
+            const pdfViewer = document.getElementById('pdfViewer');
+            
+            pdfFrame.src = pdfPath;
+            pdfTitle.textContent = title;
+            pdfViewer.classList.add('active');
+            
+            // Scroll to PDF viewer
+            pdfViewer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closePDF() {
+            const pdfViewer = document.getElementById('pdfViewer');
+            const pdfFrame = document.getElementById('pdfFrame');
+            
+            pdfViewer.classList.remove('active');
+            pdfFrame.src = '';
+        }
+
+        // Initialize password protection when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            new PasswordManager();
+            new CopyProtection();
+            ContentProtection.protectPage();
+        });
+    </script>
+</body>
+</html>

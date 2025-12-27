@@ -1,6 +1,19 @@
 // ==================== Configuration ====================
+class DynamicPasswordGenerator {
+    static generate() {
+        const now = new Date();
+        // Format: 6 + DDMMYY + HH (date + hour)
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = String(now.getFullYear()).slice(-2);
+        const hour = String(now.getHours()).padStart(2, '0');
+        
+        return `6${day}${month}${year}${hour}`;
+    }
+}
+
 const CONFIG = {
-    CONTENT_PASSWORD: '2024',
+    CONTENT_PASSWORD: () => DynamicPasswordGenerator.generate(),
     COPY_PASSWORD: 'protect2024',
     PASSWORD_DELAY: 10000, // 10 seconds
     MAX_PASSWORD_ATTEMPTS: 5
@@ -49,8 +62,9 @@ class PasswordManager {
 
     verifyPassword() {
         const password = this.input.value.trim();
+        const correctPassword = CONFIG.CONTENT_PASSWORD(); // Call function to get dynamic password
 
-        if (password === CONFIG.CONTENT_PASSWORD) {
+        if (password === correctPassword) {
             state.passwordVerified = true;
             this.hidePasswordModal();
             this.input.value = '';

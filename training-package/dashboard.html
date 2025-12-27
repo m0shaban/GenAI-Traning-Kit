@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - حقيبة GenAI التدريبية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .nav-card.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .nav-card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .nav-card.active .nav-card-description {
+            opacity: 0.95;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .quick-access {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .quick-access h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .quick-link {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .quick-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .content-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .content-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .content-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-item-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .content-item-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1rem;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-link {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">🚀 GenAI Training Kit</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="intro.html" class="nav-link">معلومات الحقيبة</a></li>
+                <li><a href="../index.html" class="nav-link">الصفحة الرئيسية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <h1>🎓 لوحة التحكم الرئيسية</h1>
+            <p>مرحباً بك في حقيبة GenAI التدريبية الشاملة</p>
+        </div>
+
+        <!-- Quick Access -->
+        <div class="quick-access">
+            <h3>⚡ الوصول السريع</h3>
+            <div class="quick-links">
+                <a href="agenda.html" class="quick-link">📅 الأجندة التفصيلية</a>
+                <a href="presentations.html" class="quick-link">📊 العروض التقديمية</a>
+                <a href="index.html" class="quick-link">📚 المحتوى الرئيسي</a>
+                <a href="tools.html" class="quick-link">🛠️ الأدوات والموارد</a>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">📈 تقدمك في البرنامج</h3>
+            
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>اليوم الأول: الأساسيات والمقدمة</span>
+                    <span>25%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>اليوم الثاني: المحتوى الإبداعي</span>
+                    <span>0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>اليوم الثالث: التحليل والأتمتة</span>
+                    <span>0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>اليوم الرابع: الدمج والتطبيقات</span>
+                    <span>0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <div class="nav-grid">
+            <a href="intro.html" class="nav-card active">
+                <div class="nav-card-icon">📖</div>
+                <div class="nav-card-title">معلومات البرنامج</div>
+                <div class="nav-card-description">تعرف على محتوى الحقيبة والمميزات والأهداف</div>
+            </a>
+
+            <a href="agenda.html" class="nav-card">
+                <div class="nav-card-icon">📅</div>
+                <div class="nav-card-title">الأجندة التفصيلية</div>
+                <div class="nav-card-description">جدول شامل لجميع الجلسات والأنشطة العملية</div>
+            </a>
+
+            <a href="presentations.html" class="nav-card">
+                <div class="nav-card-icon">📊</div>
+                <div class="nav-card-title">العروض التقديمية</div>
+                <div class="nav-card-description">4 عروض مفصلة وشاملة عن أدوات الذكاء الاصطناعي</div>
+            </a>
+
+            <a href="tools.html" class="nav-card">
+                <div class="nav-card-icon">🛠️</div>
+                <div class="nav-card-title">الأدوات والموارد</div>
+                <div class="nav-card-description">50+ أداة AI مع دليل الاستخدام والتسعير</div>
+            </a>
+
+            <a href="prompts.html" class="nav-card">
+                <div class="nav-card-icon">💡</div>
+                <div class="nav-card-title">مكتبة البروميبتات</div>
+                <div class="nav-card-description">100+ نموذج بروميبت جاهز للاستخدام الفوري</div>
+            </a>
+
+            <a href="cases.html" class="nav-card">
+                <div class="nav-card-icon">📌</div>
+                <div class="nav-card-title">حالات دراسية واقعية</div>
+                <div class="nav-card-description">تطبيقات عملية من قطاع البترول والصناعة</div>
+            </a>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <h2>📚 المحتوى الرئيسي</h2>
+            <div class="content-grid">
+                <a href="index.html" class="content-item">
+                    <div class="content-item-icon">📖</div>
+                    <div class="content-item-title">الصفحة الرئيسية</div>
+                    <div class="content-item-description">محتوى الحقيبة الكامل والمقدمة العامة</div>
+                </a>
+
+                <a href="agenda.html" class="content-item">
+                    <div class="content-item-icon">📅</div>
+                    <div class="content-item-title">الجدول الزمني</div>
+                    <div class="content-item-description">تفاصيل كل جلسة ووقتها ومحتواها</div>
+                </a>
+
+                <a href="presentations.html" class="content-item">
+                    <div class="content-item-icon">📊</div>
+                    <div class="content-item-title">الملفات والعروض</div>
+                    <div class="content-item-description">تحميل وعرض جميع الملفات والبرزنتيشنات</div>
+                </a>
+
+                <a href="tools.html" class="content-item">
+                    <div class="content-item-icon">🤖</div>
+                    <div class="content-item-title">أدوات الـ AI</div>
+                    <div class="content-item-description">50+ أداة مصنفة حسب الفئة والتسعير</div>
+                </a>
+
+                <a href="prompts.html" class="content-item">
+                    <div class="content-item-icon">💬</div>
+                    <div class="content-item-title">البروميبتات</div>
+                    <div class="content-item-description">أوامر جاهزة لكل حالة استخدام</div>
+                </a>
+
+                <a href="cases.html" class="content-item">
+                    <div class="content-item-icon">🎯</div>
+                    <div class="content-item-title">الحالات الدراسية</div>
+                    <div class="content-item-description">تطبيقات عملية وقصص نجاح حقيقية</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="content-section">
+            <h2>ℹ️ معلومات مهمة</h2>
+            <div style="display: grid; gap: 1.5rem;">
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(236, 72, 153, 0.05)); border-radius: 0.75rem; border-left: 4px solid var(--primary-color);">
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">🎓 المدة والساعات</div>
+                    <div style="color: var(--text-light);">4 أيام متتالية | 20 ساعة تدريبية | من 9:00 صباحاً إلى 3:00 عصراً</div>
+                </div>
+
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(236, 72, 153, 0.05)); border-radius: 0.75rem; border-left: 4px solid var(--primary-color);">
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">📊 محتويات الحقيبة</div>
+                    <div style="color: var(--text-light);">
+                        <span class="badge">50+ درس</span>
+                        <span class="badge">100+ بروميبت</span>
+                        <span class="badge">15+ أداة</span>
+                        <span class="badge">4 عروض</span>
+                    </div>
+                </div>
+
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(236, 72, 153, 0.05)); border-radius: 0.75rem; border-left: 4px solid var(--primary-color);">
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">🎯 الأهداف الرئيسية</div>
+                    <div style="color: var(--text-light);">
+                        📊 توفير 40% من وقت العمل • 🎨 إنتاج محتوى احترافي • 🎯 تحليل بيانات ذكي • 🔗 أتمتة بدون كود
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 2rem; border-top: 2px solid var(--border-color); margin-top: 3rem;">
+            <p style="color: var(--text-light);">حقيبة GenAI التدريبية - جميع الحقوق محفوظة © 2024</p>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">برنامج شامل في الذكاء الاصطناعي والأتمتة والإنتاجية</p>
+        </footer>
+    </div>
+
+    <!-- Include protection script -->
+    <script src="js/protection.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new PasswordManager();
+            new CopyProtection();
+            ContentProtection.protectPage();
+        });
+    </script>
+</body>
+</html>

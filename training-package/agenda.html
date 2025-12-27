@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأجندة التدريبية - حقيبة GenAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional styles for agenda page */
+        .agenda-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .day-section {
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 2rem;
+        }
+
+        .day-section.day-2 {
+            border-left-color: #f093fb;
+        }
+
+        .day-section.day-3 {
+            border-left-color: #4facfe;
+        }
+
+        .day-section.day-4 {
+            border-left-color: #43e97b;
+        }
+
+        .day-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .session-block {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .session-block:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .session-time {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .session-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .session-content {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .session-content ul {
+            margin-top: 0.75rem;
+            padding-right: 1.5rem;
+        }
+
+        .session-content li {
+            margin-bottom: 0.5rem;
+            list-style: disc;
+        }
+
+        .day-objective {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .objective-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .objective-text {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .activity-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .toc {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .toc h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            padding-right: 1.5rem;
+        }
+
+        .toc li {
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            list-style: disc;
+        }
+
+        .toc-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc-link:hover {
+            text-decoration: underline;
+        }
+
+        .timing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .timing-table th,
+        .timing-table td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timing-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .timing-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .day-section {
+                padding-left: 1rem;
+            }
+
+            .day-title {
+                font-size: 1.5rem;
+            }
+
+            .session-block {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">🚀 GenAI Training Kit</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="intro.html" class="nav-link">معلومات المحتوى</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="agenda-container">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">الأجندة التدريبية الكاملة</h1>
+            <p style="font-size: 1.1rem; color: var(--text-light);">ورشة عمل شاملة - 4 أيام</p>
+        </div>
+
+        <!-- Summary Stats -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">20</div>
+                <div style="color: var(--text-light);">ساعة تدريبية</div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
+                <div style="font-size: 2rem; font-weight: 700; color: #f093fb;">4</div>
+                <div style="color: var(--text-light);">أيام متتالية</div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
+                <div style="font-size: 2rem; font-weight: 700; color: #4facfe;">20+</div>
+                <div style="color: var(--text-light);">جلسة تدريبية</div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);">
+                <div style="font-size: 2rem; font-weight: 700; color: #43e97b;">4</div>
+                <div style="color: var(--text-light);">أنشطة عملية</div>
+            </div>
+        </div>
+
+        <!-- Goals Overview -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(102, 126, 234, 0.05)); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid var(--primary-color);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+                <div style="font-weight: 600;">الإنتاجية</div>
+                <div style="font-size: 0.9rem; color: var(--text-light);">توفير 40% من وقت العمل</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(240, 147, 251, 0.05)); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #f093fb;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎨</div>
+                <div style="font-weight: 600;">الإبداع</div>
+                <div style="font-size: 0.9rem; color: var(--text-light);">محتوى احترافي بسرعة</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(79, 172, 254, 0.05)); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #4facfe;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+                <div style="font-weight: 600;">القرار</div>
+                <div style="font-size: 0.9rem; color: var(--text-light);">تحليل بيانات ذكي</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(67, 233, 123, 0.1), rgba(67, 233, 123, 0.05)); padding: 1.5rem; border-radius: 0.75rem; border-left: 4px solid #43e97b;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔗</div>
+                <div style="font-weight: 600;">الدمج</div>
+                <div style="font-size: 0.9rem; color: var(--text-light);">أتمتة بدون كود</div>
+            </div>
+        </div>
+
+        <!-- ===== DAY 1 ===== -->
+        <div class="day-section">
+            <h2 class="day-title">
+                <span style="font-size: 2.5rem;">☀️</span>
+                اليوم الأول: الأساسيات وهندسة الأوامر
+            </h2>
+
+            <div class="day-objective">
+                <div class="objective-label">🎯 الهدف اليومي</div>
+                <div class="objective-text">فهم GenAI وإتقان هندسة الأوامر (R-T-F و C-A-R) + تطبيقات عملية فورية</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time">9:00 - 9:45 ص (45 دقيقة)</div>
+                <div class="session-title">الجلسة الأولى: ترحيب ومسار الورشة</div>
+                <div class="session-content">
+                    <ul>
+                        <li>ترحيب بالمشاركين واستعراض خبراتهم</li>
+                        <li>شرح الأهداف الأربعة للورشة</li>
+                        <li>التأكيد على منهج التعلم بالممارسة</li>
+                        <li>توزيع دليل Prompt Bank</li>
+                        <li>عرض خارطة اليوم الأول</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time">9:45 - 11:00 ص (75 دقيقة)</div>
+                <div class="session-title">الجلسة الثانية: ما هو GenAI ولماذا الآن؟</div>
+                <div class="session-content">
+                    <ul>
+                        <li>تعريف الذكاء الاصطناعي التوليدي</li>
+                        <li>الفرق بين GPT و Claude و Gemini</li>
+                        <li>مبدأ Token وكيفية احتساب التكلفة</li>
+                        <li>إحصائية الإنتاجية 37% من McKinsey</li>
+                        <li>مخاوف الأمان الشائعة والحلول</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time">11:00 - 12:15 م (75 دقيقة)</div>
+                <div class="session-title">الجلسة الثالثة: منظومة الأدوات الرئيسية</div>
+                <div class="session-content">
+                    <ul>
+                        <li>مقارنة سريعة بين ChatGPT-4 و Claude-3 و Gemini-1.5</li>
+                        <li>متى تختار أي نموذج؟</li>
+                        <li>التسعير بالريال السعودي</li>
+                        <li>Plugins و Code Interpreter و Browse Mode</li>
+                        <li>Poe.com كبوابة موحّدة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                <div style="color: #d97706; font-weight: 600; margin-bottom: 0.5rem;">استراحة غداء</div>
+                <div class="session-time" style="background: #f59e0b;">12:15 - 1:00 م (45 دقيقة)</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time">1:00 - 1:45 م (45 دقيقة)</div>
+                <div class="session-title">الجلسة الرابعة: هندسة الأوامر - صيغة R-T-F</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Role-Task-Format (دور - مهمة - صيغة)</li>
+                        <li>أمثلة على إنشاء تقارير يومية</li>
+                        <li>تمرين: كتابة 5 ايميلات احترافية</li>
+                        <li>مقارنة النتائج قبل وبعد</li>
+                        <li>أهمية السياق الوظيفي</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time">1:45 - 2:30 م (45 دقيقة)</div>
+                <div class="session-title">الجلسة الخامسة: هندسة الأوامر - صيغة C-A-R</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Context-Action-Result (سياق - إجراء - نتيجة)</li>
+                        <li>إعداد محضر اجتماع فوري</li>
+                        <li>استخدام نموذج الشركة الرسمي</li>
+                        <li>استيراد ملف Word مع الحفاظ على التنسيق</li>
+                        <li>تمرين: تحويل تسجيل صوتي لمحضر رسمي</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: linear-gradient(135deg, #dbeafe, #e0e7ff); border-left: 4px solid #3b82f6;">
+                <div style="color: #1e40af; font-weight: 600; margin-bottom: 0.5rem;">⭐ Pro Tip اليوم</div>
+                <div class="session-time" style="background: #3b82f6;">2:30 - 3:00 م (30 دقيقة): حقول النص المتغيرة</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Dynamic Prompt في Excel و Google Sheets</li>
+                        <li>إنشاء 50 رسالة مخصصة فوراً</li>
+                        <li>تقليل الأخطاء البشرية بنسبة 80%</li>
+                        <li>ملف template جاهز للنسخ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DAY 2 ===== -->
+        <div class="day-section day-2">
+            <h2 class="day-title">
+                <span style="font-size: 2.5rem; color: #f093fb;">🎨</span>
+                اليوم الثاني: المحتوى الإبداعي والتسويق
+            </h2>
+
+            <div class="day-objective" style="border-right-color: #f093fb;">
+                <div class="objective-label" style="color: #f093fb;">🎯 الهدف اليومي</div>
+                <div class="objective-text">إتقان إنتاج المحتوى الإبداعي والتسويقي الرقمي باستخدام أدوات GenAI</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #f093fb;">9:00 - 10:30 ص (90 دقيقة)</div>
+                <div class="session-title">الجلسة الأولى: منصة المحتوى الإبداعي</div>
+                <div class="session-content">
+                    <ul>
+                        <li>استعراض Jasper و Copy.ai و Writesonic</li>
+                        <li>متى تستخدم ChatGPT بدلاً منها؟</li>
+                        <li>Brand Voice وتدريب النموذج</li>
+                        <li>تقليل التكلفة بنسبة 60%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #f093fb;">10:30 - 12:00 ظ (90 دقيقة)</div>
+                <div class="session-title">الجلسة الثانية: إنتاج الصور بالذكاء الاصطناعي</div>
+                <div class="session-content">
+                    <ul>
+                        <li>مقارنة Midjourney vs. DALL·E 3 vs. Adobe Firefly</li>
+                        <li>شرح أوامر Aspect Ratio و Style Raw</li>
+                        <li>توليد 10 تصاميم خلال 5 دقائق</li>
+                        <li>صور PNG بخلفية شفافة</li>
+                        <li>ربط الصور تلقائياً بـ Canva</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                <div style="color: #d97706; font-weight: 600; margin-bottom: 0.5rem;">استراحة غداء</div>
+                <div class="session-time" style="background: #f59e0b;">12:00 - 12:45 م (45 دقيقة)</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #f093fb;">12:45 - 1:45 م (60 دقيقة)</div>
+                <div class="session-title">الجلسة الثالثة: إعداد العروض التقديمية الآني</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Gamma.app و Beautiful.ai لإنشاء Pitch Deck</li>
+                        <li>ربط النص بالتصميم التلقائي</li>
+                        <li>استيراد CSV لرسوم بيانية مباشرة</li>
+                        <li>تصدير إلى PowerPoint مع الحفاظ على التنسيق</li>
+                        <li>3 قوالب جاهزة بالعربية والإنجليزية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #f093fb;">1:45 - 2:45 م (60 دقيقة)</div>
+                <div class="session-title">الجلسة الرابعة: حملات التسويق الرقمي السريعة</div>
+                <div class="session-content">
+                    <ul>
+                        <li>بناء حملة متكاملة (نص + صورة + هاشتاقات) في 15 دقيقة</li>
+                        <li>Copy.ai و Midjourney</li>
+                        <li>جدولة المنشورات عبر Buffer</li>
+                        <li>Google Trends لاختيار الكلمات</li>
+                        <li>تحليل الأداء مع Notion KPI Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: linear-gradient(135deg, #e0e7ff, #fce7f3); border-left: 4px solid #ec4899;">
+                <div style="color: #be185d; font-weight: 600; margin-bottom: 0.5rem;">⭐ Pro Tip اليوم</div>
+                <div class="session-time" style="background: #ec4899;">2:45 - 3:00 م (15 دقيقة): الامتدادات المجانية</div>
+                <div class="session-content">
+                    <ul>
+                        <li>AIPRM و WebChatGPT على Chrome</li>
+                        <li>مكتبة 4000 موجه جاهز</li>
+                        <li>Humanizer لاجتياز كاشف AI</li>
+                        <li>YouTube Summary للفيديوهات الطويلة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DAY 3 ===== -->
+        <div class="day-section day-3">
+            <h2 class="day-title">
+                <span style="font-size: 2.5rem; color: #4facfe;">📊</span>
+                اليوم الثالث: التحليل والأتمتة بدون كود
+            </h2>
+
+            <div class="day-objective" style="border-right-color: #4facfe;">
+                <div class="objective-label" style="color: #4facfe;">🎯 الهدف اليومي</div>
+                <div class="objective-text">إتقان تحليل البيانات والأتمتة الذكية بدون الحاجة لكود البرمجة</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #4facfe;">9:00 - 10:15 ص (75 دقيقة)</div>
+                <div class="session-title">الجلسة الأولى: منصة التحليل الذكي</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Julius.ai و Rows.com لتحليل Excel بدون معادلات</li>
+                        <li>رفع ملف مبيعات واستخراج الرؤى تلقائياً</li>
+                        <li>لوحة معلومات مباشرة</li>
+                        <li>تصدير النتائج إلى Google Slides</li>
+                        <li>15 سؤال جاهز يعمل على أي ملف CSV</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #4facfe;">10:15 - 11:00 ص (45 دقيقة)</div>
+                <div class="session-title">الجلسة الثانية: التنبؤ البسيط بالذكاء الاصطناعي</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Obviously.ai لبناء نموذج تنبؤ بالمبيعات</li>
+                        <li>مفهوم Overfitting بلغة مبسطة</li>
+                        <li>تحميل النتائج كملف PDF إرشادي</li>
+                        <li>مقارنة الدقة مع نماذج Excel التقليدية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                <div style="color: #d97706; font-weight: 600; margin-bottom: 0.5rem;">استراحة غداء</div>
+                <div class="session-time" style="background: #f59e0b;">11:00 - 11:45 ص (45 دقيقة)</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #4facfe;">11:45 - 1:00 م (75 دقيقة)</div>
+                <div class="session-title">الجلسة الثالثة: أتمتة سير العمل اليومية</div>
+                <div class="session-content">
+                    <ul>
+                        <li>ربط Gmail و Google Sheets و Slack عبر Zapier و Make</li>
+                        <li>مثال عملي: استلام طلب عميل وتسجيله وإشعار الفريق</li>
+                        <li>تقليل الوقت من 15 دقيقة إلى 1 دقيقة</li>
+                        <li>Template جاهز للنسخ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #4facfe;">1:00 - 2:00 م (60 دقيقة)</div>
+                <div class="session-title">الجلسة الرابعة: إنشاء تقارير دورية دون تدخل</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Microsoft Power Automate لاستخراج تقرير أسبوعي</li>
+                        <li>إرسال التقرير عبر Teams تلقائياً</li>
+                        <li>تخصيص النموذج بلغة عربية صحيحة</li>
+                        <li>إضافة شروط IF لتجنب الأخطاء</li>
+                        <li>حفظ التقرير تلقائياً في SharePoint</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #4facfe;">2:00 - 2:45 م (45 دقيقة)</div>
+                <div class="session-title">الجلسة الخامسة: لوحة قرارات المديرين</div>
+                <div class="session-content">
+                    <ul>
+                        <li>لوحة معلومات Notion متكاملة</li>
+                        <li>جمع بيانات المبيعات والمخزون والموارد البشرية</li>
+                        <li>AI Block لطرح أسئلة بالعربية</li>
+                        <li>تحديث تلقائي كل ساعة عبر API</li>
+                        <li>تصدير ملف PDF تفاعلي للجوال</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: linear-gradient(135deg, #cffafe, #dbeafe); border-left: 4px solid #0891b2;">
+                <div style="color: #0e7490; font-weight: 600; margin-bottom: 0.5rem;">⭐ Pro Tip اليوم</div>
+                <div class="session-time" style="background: #0891b2;">2:45 - 3:00 م (15 دقيقة): الروبوت الظاهري</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Relay.app لإنشاء روبوت يعمل ليلاً</li>
+                        <li>جدولة التشغيل الساعة 2 صباحاً</li>
+                        <li>إرسال ملخص الصباح</li>
+                        <li>توفير 70% من التكاليف</li>
+                        <li>إشعارات SMS عند حدوث خطأ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DAY 4 ===== -->
+        <div class="day-section day-4">
+            <h2 class="day-title">
+                <span style="font-size: 2.5rem; color: #43e97b;">🚀</span>
+                اليوم الرابع: الدمج والأخلاقيات والمستقبل
+            </h2>
+
+            <div class="day-objective" style="border-right-color: #43e97b;">
+                <div class="objective-label" style="color: #43e97b;">🎯 الهدف اليومي</div>
+                <div class="objective-text">دمج كل المهارات + بناء حلول شاملة + فهم الأخلاقيات والمستقبل</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #43e97b;">9:00 - 10:00 ص (60 دقيقة)</div>
+                <div class="session-title">الجلسة الأولى: بناء سير عمل متكامل</div>
+                <div class="session-content">
+                    <ul>
+                        <li>ربط ChatGPT + Midjourney + Gamma + Zapier في مسار واحد</li>
+                        <li>فكرة تسويقية تولد صورة وفيديو وعرض وتنشر خلال 10 دقائق</li>
+                        <li>حسابات API متصلة مسبقاً</li>
+                        <li>ملف JSON جاهز للنسخ</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #43e97b;">10:00 - 10:45 ص (45 دقيقة)</div>
+                <div class="session-title">الجلسة الثانية: نماذج اللغة الكبيرة المفتوحة</div>
+                <div class="session-content">
+                    <ul>
+                        <li>Llama-3 و Falcon واستخدامها محلياً</li>
+                        <li>Ollama للتثبيت المحلي</li>
+                        <li>مزايا الخصوصية الكاملة</li>
+                        <li>خطوات التثبيت خلال 5 دقائق</li>
+                        <li>مقارنة الأداء مع نماذج السحابة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                <div style="color: #d97706; font-weight: 600; margin-bottom: 0.5rem;">استراحة غداء</div>
+                <div class="session-time" style="background: #f59e0b;">10:45 - 11:30 ص (45 دقيقة)</div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #43e97b;">11:30 - 12:30 م (60 دقيقة)</div>
+                <div class="session-title">الجلسة الثالثة: الأخلاقيات والخصوصية</div>
+                <div class="session-content">
+                    <ul>
+                        <li>قانون PDPL السعودي وتأثيره على AI</li>
+                        <li>قائمة تحقق لمراجعة البيانات قبل الرفع</li>
+                        <li>حذف السجلات من ChatGPT</li>
+                        <li>استخدام وضعية Incognito</li>
+                        <li>سياسة AI داخلية جاهزة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #43e97b;">12:30 - 1:30 م (60 دقيقة)</div>
+                <div class="session-title">الجلسة الرابعة: إدارة التغيير في المنشآت</div>
+                <div class="session-content">
+                    <ul>
+                        <li>نموذج ADKAR المبسّط</li>
+                        <li>إنشاء فريق مختص بالـ AI</li>
+                        <li>حساب ROI بسيط</li>
+                        <li>قصص نجاح عملية من بنك وشركة نفط</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block">
+                <div class="session-time" style="background: #43e97b;">1:30 - 2:15 م (45 دقيقة)</div>
+                <div class="session-title">الجلسة الخامسة: مستقبل الوظائف والمهارات</div>
+                <div class="session-content">
+                    <ul>
+                        <li>توقعات WEF حول الوظائف 2025-2030</li>
+                        <li>المهارات الـ 10 الأكثر طلباً</li>
+                        <li>خطة تطوير شخصي خلال 90 يوماً</li>
+                        <li>مسارات تعليمية مجانية (Coursera, edX)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: linear-gradient(135deg, #dcfce7, #dbeafe); border-left: 4px solid #10b981;">
+                <div style="color: #065f46; font-weight: 600; margin-bottom: 0.5rem;">⭐ Pro Tip اليوم</div>
+                <div class="session-time" style="background: #10b981;">2:15 - 2:45 م (30 دقيقة): الذكاء الاصطناعي الشخصي</div>
+                <div class="session-content">
+                    <ul>
+                        <li>مساعد خاص بك في Poe باسم الشركة</li>
+                        <li>تدريبه على 50 وثيقة داخلية</li>
+                        <li>إتاحته للموظفين برابط خاص</li>
+                        <li>تحديث أسبوعي تلقائي من Google Drive</li>
+                        <li>دليل صيانة شهرية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="session-block" style="background: linear-gradient(135deg, #f3e8ff, #fef3c7); border-left: 4px solid #8b5cf6;">
+                <div style="color: #6d28d9; font-weight: 600; margin-bottom: 0.5rem;">🎓 الختام والشهادات</div>
+                <div class="session-time" style="background: #8b5cf6;">2:45 - 3:00 م (15 دقيقة)</div>
+                <div class="session-content">
+                    <ul>
+                        <li>تلخيص أهم 3 نقط من كل يوم</li>
+                        <li>دعوة للمشاركة على LinkedIn بـ #GenAI4EGY</li>
+                        <li>توزيع الشهادات</li>
+                        <li>تحية بالنجاح المستمر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practical Activities Section -->
+        <div class="activity-section">
+            <h3 class="activity-title">🎯 الأنشطة العملية في جميع الأيام</h3>
+            
+            <div style="display: grid; gap: 1.5rem;">
+                <div class="session-block">
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.75rem;">📌 نشاط اليوم الأول: سباق الـ 30 دقيقة</div>
+                    <div class="session-content">
+                        <p>فريقان يختاران مشكلة إدارية ويستخدمان R-T-F و C-A-R لحلها. تسليم حلول مطبوعة والتصويت على الأفضل. الفائز يحصل على اشتراك شهر مجاني في Poe Pro</p>
+                    </div>
+                </div>
+
+                <div class="session-block">
+                    <div style="font-weight: 600; color: #f093fb; margin-bottom: 0.75rem;">📌 نشاط اليوم الثاني: إطلاق حملة افتراضية</div>
+                    <div class="session-content">
+                        <p>فرق متعددة التخصصات تطلق منتجاً افتراضياً خلال 45 دقيقة مع 3 إعلانات + 2 تصميم + عرض 5 شرائح. الفائز يحصل على اشتراك Midjourney شهر</p>
+                    </div>
+                </div>
+
+                <div class="session-block">
+                    <div style="font-weight: 600; color: #4facfe; margin-bottom: 0.75rem;">📌 نشاط اليوم الثالث: تحدٍّ الأتمتة</div>
+                    <div class="session-content">
+                        <p>كل فريق يختار عملية مكررة ويصمم سير عمل كامل خلال 60 دقيقة. تقديم Flowchart والنتيجة. الفريق بأعلى توفير وقت يحصل على اشتراك Make Pro</p>
+                    </div>
+                </div>
+
+                <div class="session-block">
+                    <div style="font-weight: 600; color: #43e97b; margin-bottom: 0.75rem;">📌 المشروع الختامي: خطة GenAI 100 يوم</div>
+                    <div class="session-content">
+                        <p>كل فريق يقدم خطة 100 يوم لإدخال GenAI في قسمه مع عرض تقديمي 7 شرائح وورقة عمل Excel للتكلفة والعائد</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 4rem; padding: 2rem; border-top: 2px solid var(--border-color);">
+            <p style="color: var(--text-light); font-size: 0.95rem;">
+                📧 للاستفسارات والمتابعة المستمرة
+            </p>
+            <p style="color: var(--text-light); margin-top: 0.5rem; font-size: 0.9rem;">
+                &copy; 2024 GenAI Training Kit. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </div>
+
+    <!-- Include protection script -->
+    <script src="js/protection.js"></script>
+    <script>
+        // Initialize password protection when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            new PasswordManager();
+            new CopyProtection();
+            ContentProtection.protectPage();
+        });
+    </script>
+</body>
+</html>
