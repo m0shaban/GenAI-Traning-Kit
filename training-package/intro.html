@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>حقيبة GenAI التدريبية - تمكين الشركات بأدوات الذكاء الاصطناعي</title>
+    <title>GenAI PowerUP - حوّل شركتك للمستقبل في 4 أيام | التدريب رقم 1 في مصر</title>
+    <meta name="description" content="وفّر 40% من وقت فريقك وضاعف الإنتاجية 3X مع أقوى برنامج تدريبي في الذكاء الاصطناعي التوليدي. 100+ أداة، 300+ برومبت، 20+ حالة عملية. احجز الآن!" />
     <link rel="stylesheet" href="css/intro-style.css" />
+    <link rel="stylesheet" href="css/intro-modern.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -34,43 +36,84 @@
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-banner">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">🔥 أكثر من 500 متدرب حققوا قفزة رقمية</div>
+          <h1 class="hero-title">
+            <span class="highlight">قفّز</span> شركتك للمستقبل<br/>
+            في <span class="accent">4 أيام بس!</span>
+          </h1>
+          <p class="hero-subtitle">
+            💰 وفّر 40% من وقت فريقك | 🚀 ضاعف الإنتاجية 3 أضعاف | ⚡ نتائج من أول يوم
+          </p>
+          <p class="hero-description">
+            مش مجرد تدريب عادي... ده تحول رقمي كامل! موظفينك هيتعلموا يشتغلوا بالـ AI زي المحترفين، 
+            يخلصوا شغل أسبوع في ساعتين، ويرفعوا مستوى الشركة بطريقة ما كانتش تتخيلها.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">أداة AI جاهزة</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">300+</div>
+              <div class="stat-label">برومبت احترافي</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">حالة عملية</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">مشروع جاهز</div>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-pulse" onclick="scrollToAccess()">
+              🚀 ابدأ رحلة التحول دلوقتي
+            </button>
+            <button class="btn btn-secondary" onclick="document.getElementById('packages').scrollIntoView({behavior: 'smooth'})">
+              📦 شوف الباقات والأسعار
+            </button>
+          </div>
+
+          <div class="trust-badges">
+            <span>✅ ضمان استرجاع المبلغ</span>
+            <span>✅ شهادة معتمدة</span>
+            <span>✅ دعم مجاني 3 شهور</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-circle">
+            <div class="circle-content">
+              <img src="assets/images/logo.png" alt="GenAI PowerUP" class="circle-logo" />
+              <div class="circle-text">
+                <span class="big-text">AI</span>
+                <span class="small-text">PowerUP</span>
+              </div>
+            </div>
+            <div class="circle-ring ring-1"></div>
+            <div class="circle-ring ring-2"></div>
+            <div class="circle-ring ring-3"></div>
+          </div>
+          <div class="floating-cards">
+            <div class="float-card card-1">💡 ChatGPT</div>
+            <div class="float-card card-2">🎨 Midjourney</div>
+            <div class="float-card card-3">📊 Claude</div>
+            <div class="float-card card-4">🎬 Runway</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-banner-bottom">
         <img
           src="assets/images/banner.png"
           alt="GenAI PowerUP Banner"
-          style="
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
-          "
+          class="banner-image"
         />
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">حوّل شركتك للعصر الرقمي في 4 أيام</h1>
-        <p class="hero-subtitle">
-          برنامج GenAI PowerUP التدريبي - حقيبة مرنة تناسب كل احتياجاتك
-        </p>
-        <p class="hero-description">
-          وفّر 40% من وقت موظفينك | ضاعف الإنتاجية | احصل على نتائج فورية من
-          اليوم الأول
-        </p>
-        <div class="hero-cta">
-          <button class="btn btn-primary" onclick="scrollToAccess()">
-            ابدأ التدريب الآن
-          </button>
-          <button
-            class="btn btn-secondary"
-            onclick="document.getElementById('content').scrollIntoView({behavior: 'smooth'})"
-          >
-            استعرض المحتوى
-          </button>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="gradient-circle"></div>
       </div>
     </section>
 
@@ -519,24 +562,148 @@
     <!-- Schedule Section -->
     <section id="schedule" class="schedule">
       <div class="container">
-        <h2 class="section-title">الجدول الزمني</h2>
-        <div class="schedule-info">
-          <div class="schedule-item">
-            <span class="label">المدة الإجمالية:</span>
-            <span class="value">4 أيام (20 ساعة)</span>
+        <h2 class="section-title">⏰ الجدول الزمني - 4 أيام تحول رقمي كامل</h2>
+        <p class="section-subtitle">كل يوم مليان تطبيقات عملية ومشاريع حقيقية من شغلك</p>
+        
+        <div class="timeline">
+          <!-- Day 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <div class="day-header">
+                <h3>اليوم الأول: الانطلاقة القوية 🚀</h3>
+                <span class="day-duration">5 ساعات</span>
+              </div>
+              <div class="day-sessions">
+                <div class="session">
+                  <span class="session-time">⏱️ 9:00 - 10:30</span>
+                  <span class="session-title">مقدمة عن AI - من الصفر للاحتراف</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 10:45 - 12:30</span>
+                  <span class="session-title">ChatGPT عملي - أول برومبت ليك</span>
+                </div>
+                <div class="session highlight">
+                  <span class="session-time">🍽️ 12:30 - 1:15</span>
+                  <span class="session-title">استراحة غداء + Networking</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 1:15 - 3:00</span>
+                  <span class="session-title">هندسة الأوامر - اكتب برومبتات زي المحترفين</span>
+                </div>
+              </div>
+              <div class="day-outcome">
+                <strong>🎯 هتخرج تعمل إيه:</strong> تكتب رسايل، تقارير، وعروض تقديمية في دقايق
+              </div>
+            </div>
           </div>
-          <div class="schedule-item">
-            <span class="label">الوقت اليومي:</span>
-            <span class="value">9:00 صباحاً - 3:00 عصراً</span>
+
+          <!-- Day 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <div class="day-header">
+                <h3>اليوم الثاني: المحتوى الإبداعي 🎨</h3>
+                <span class="day-duration">5 ساعات</span>
+              </div>
+              <div class="day-sessions">
+                <div class="session">
+                  <span class="session-time">⏱️ 9:00 - 10:30</span>
+                  <span class="session-title">Canva + AI - تصميمات احترافية بسرعة</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 10:45 - 12:30</span>
+                  <span class="session-title">Gamma.ai - عروض تقديمية في 60 ثانية!</span>
+                </div>
+                <div class="session highlight">
+                  <span class="session-time">🍽️ 12:30 - 1:15</span>
+                  <span class="session-title">استراحة + مراجعة مشاريع اليوم الأول</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 1:15 - 3:00</span>
+                  <span class="session-title">أدوات الفيديو - Runway & HeyGen</span>
+                </div>
+              </div>
+              <div class="day-outcome">
+                <strong>🎯 هتخرج تعمل إيه:</strong> تصمم بوستات، عروض، وفيديوهات بجودة استوديو
+              </div>
+            </div>
           </div>
-          <div class="schedule-item">
-            <span class="label">عدد الجلسات:</span>
-            <span class="value">5 جلسات يومية + Pro Tips</span>
+
+          <!-- Day 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <div class="day-header">
+                <h3>اليوم الثالث: التحليل والأتمتة 📊</h3>
+                <span class="day-duration">5 ساعات</span>
+              </div>
+              <div class="day-sessions">
+                <div class="session">
+                  <span class="session-time">⏱️ 9:00 - 10:30</span>
+                  <span class="session-title">ChatGPT Advanced - تحليل بيانات وملفات</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 10:45 - 12:30</span>
+                  <span class="session-title">Zapier & Make - أتمتة بدون كود</span>
+                </div>
+                <div class="session highlight">
+                  <span class="session-time">🍽️ 12:30 - 1:15</span>
+                  <span class="session-title">استراحة + Case Studies</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 1:15 - 3:00</span>
+                  <span class="session-title">حالات عملية من قطاعك (Petroleum/Banking/etc)</span>
+                </div>
+              </div>
+              <div class="day-outcome">
+                <strong>🎯 هتخرج تعمل إيه:</strong> تحلل بيانات، تعمل Dashboards، وتأتمت مهام متكررة
+              </div>
+            </div>
           </div>
-          <div class="schedule-item">
-            <span class="label">الاستراحات:</span>
-            <span class="value">استراحة غداء 45 دقيقة</span>
+
+          <!-- Day 4 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <div class="day-header">
+                <h3>اليوم الرابع: التطبيق والمشروع النهائي 🏆</h3>
+                <span class="day-duration">5 ساعات</span>
+              </div>
+              <div class="day-sessions">
+                <div class="session">
+                  <span class="session-time">⏱️ 9:00 - 10:30</span>
+                  <span class="session-title">الدمج في بيئة العمل - Security & Ethics</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 10:45 - 12:00</span>
+                  <span class="session-title">بناء Copilots مخصصة (GPTs & Assistants)</span>
+                </div>
+                <div class="session highlight">
+                  <span class="session-time">🍽️ 12:00 - 12:45</span>
+                  <span class="session-title">استراحة أخيرة</span>
+                </div>
+                <div class="session">
+                  <span class="session-time">⏱️ 12:45 - 2:30</span>
+                  <span class="session-title">مشروع التخرج - حل مشكلة حقيقية من شغلك</span>
+                </div>
+                <div class="session special">
+                  <span class="session-time">🎓 2:30 - 3:00</span>
+                  <span class="session-title">تسليم الشهادات + خطة 90 يوم</span>
+                </div>
+              </div>
+              <div class="day-outcome">
+                <strong>🎯 هتخرج تعمل إيه:</strong> مشروع كامل جاهز للتطبيق في شركتك من أول يوم
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="schedule-cta">
+          <h3>🔥 جاهز تبدأ رحلة التحول؟</h3>
+          <button class="btn btn-primary btn-large" onclick="scrollToAccess()">
+            احجز مكانك دلوقتي
+          </button>
         </div>
       </div>
     </section>
@@ -544,19 +711,72 @@
     <!-- Access Section -->
     <section id="access" class="access-section">
       <div class="container">
-        <h2 class="section-title">الوصول للمحتوى الكامل</h2>
-        <div class="access-box">
-          <p class="access-description">
-            لمشاهدة كل المحتوى والتمارين والبرومبتات والأدوات والدروس
-            والبرزنتيشن، يرجى النقر على الزر أدناه وإدخال كلمة المرور التي سيتم
-            إعطاؤها لك.
+        <div class="access-hero">
+          <h2 class="access-title">🚀 جاهز تحول شركتك للمستقبل؟</h2>
+          <p class="access-headline">
+            انضم لـ 500+ متدرب حققوا قفزة رقمية حقيقية في شركاتهم
           </p>
-          <div class="access-buttons">
-            <button class="btn btn-large" onclick="goToContent()">
-              الدخول للمحتوى الكامل
+        </div>
+
+        <div class="access-grid">
+          <div class="access-card main-cta">
+            <div class="card-badge">⭐ الأكثر اختياراً</div>
+            <h3>🎓 ابدأ التدريب الكامل</h3>
+            <p>احصل على الحقيبة التدريبية الكاملة بـ 100+ أداة و 300+ برومبت و 15+ مشروع جاهز</p>
+            <ul class="benefits-list">
+              <li>✅ وصول مدى الحياة لكل المحتوى</li>
+              <li>✅ شهادة معتمدة بعد الانتهاء</li>
+              <li>✅ دعم فني 3 شهور مجاناً</li>
+              <li>✅ Updates مجانية كل شهر</li>
+            </ul>
+            <button class="btn btn-primary btn-large btn-glow" onclick="goToContent()">
+              🔓 افتح المحتوى الكامل دلوقتي
+            </button>
+            <p class="access-note">🔒 محمي بكلمة مرور - هتستلمها من المدرب مباشرة</p>
+          </div>
+
+          <div class="access-card">
+            <h3>💬 عايز تستشير قبل ما تبدأ؟</h3>
+            <p>اتكلم معانا وحدد الباقة المناسبة ليك ولشركتك</p>
+            <div class="contact-options">
+              <a href="https://wa.me/201234567890" class="contact-btn whatsapp" target="_blank">
+                <span class="icon">📱</span>
+                <span class="text">WhatsApp</span>
+              </a>
+              <a href="mailto:training@genai-powerup.com" class="contact-btn email">
+                <span class="icon">📧</span>
+                <span class="text">Email</span>
+              </a>
+              <a href="https://linkedin.com/in/mshaban" class="contact-btn linkedin" target="_blank">
+                <span class="icon">💼</span>
+                <span class="text">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="access-card">
+            <h3>🎁 عروض وباقات خاصة</h3>
+            <p>باقات مرنة تناسب كل الشركات - من الصغيرة للكبرى</p>
+            <ul class="offers-list">
+              <li>💼 باقة الشركات - خصم 30%</li>
+              <li>👥 تدريب 10+ موظفين - خصم 40%</li>
+              <li>🏆 باقة VIP - محتوى مخصص</li>
+              <li>🎯 استشارة مجانية 1 ساعة</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="document.getElementById('packages').scrollIntoView({behavior: 'smooth'})">
+              شوف كل الباقات
             </button>
           </div>
-          <p class="access-note">كلمة المرور ستُعطى لك مباشرة من المدرب</p>
+        </div>
+
+        <div class="urgency-banner">
+          <div class="urgency-content">
+            <span class="urgency-icon">⚡</span>
+            <div class="urgency-text">
+              <strong>عرض محدود!</strong>
+              <span>أول 20 متدرب يحجزوا هيحصلوا على 3 استشارات مجانية بعد التدريب (قيمتها $300)</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
