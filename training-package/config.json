@@ -1,0 +1,40 @@
+{
+  "projectName": "GenAI Training Kit",
+  "version": "2.0",
+  "description": "حقيبة تدريبية شاملة في الذكاء الاصطناعي والأدوات الحديثة",
+  "author": "GenAI Team",
+  "license": "All Rights Reserved",
+  
+  "security": {
+    "contentPassword": "2024",
+    "copyPassword": "protect2024",
+    "passwordDelay": 10000,
+    "maxAttempts": 5
+  },
+  
+  "pages": {
+    "index": {
+      "title": "حقيبة تدريب الذكاء الاصطناعي",
+      "file": "index.html",
+      "protected": true
+    }
+  },
+  
+  "features": {
+    "passwordProtection": true,
+    "copyProtection": true,
+    "responsiveDesign": true,
+    "animations": true,
+    "darkMode": false,
+    "multiLanguage": false,
+    "offlineSupport": false
+  },
+  
+  "deployment": {
+    "platform": "GitHub Pages",
+    "domain": "https://m0shaban.github.io/GenAI-Training-Kit/",
+    "branch": "gh-pages",
+    "buildCommand": "npm run build",
+    "deployCommand": "npm run deploy"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "genai-training-kit",
+  "version": "2.0.0",
+  "description": "حقيبة تدريبية شاملة في الذكاء الاصطناعي والأتمتة",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ./training-package -p 8000 -c-1",
+    "build": "echo 'Build process - ready for deployment'",
+    "deploy": "git add . && git commit -m '🚀 Deploy' && git push origin main",
+    "dev": "http-server ./training-package -p 3000 -c-1",
+    "test": "echo 'No tests specified'",
+    "serve": "python -m http.server 8000 --directory training-package"
+  },
+  "keywords": [
+    "AI",
+    "ChatGPT",
+    "artificial-intelligence",
+    "training",
+    "education",
+    "Arabic",
+    "الذكاء الاصطناعي",
+    "تدريب",
+    "تعليم"
+  ],
+  "author": "GenAI Team",
+  "license": "All Rights Reserved",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m0shaban/GenAI-Training-Kit.git"
+  },
+  "homepage": "https://m0shaban.github.io/GenAI-Training-Kit/",
+  "bugs": {
+    "url": "https://github.com/m0shaban/GenAI-Training-Kit/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 0.2%"
+  ]
+}
