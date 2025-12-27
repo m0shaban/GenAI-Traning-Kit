@@ -20,7 +20,12 @@
           />
           <span class="logo-text">GenAI PowerUP</span>
         </div>
-        <ul class="nav-menu">
+        <button class="nav-toggle" aria-expanded="false" aria-label="فتح وإغلاق القائمة">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
           <li><a href="#about" class="nav-link">عن البرنامج</a></li>
           <li><a href="#content" class="nav-link">المحتوى</a></li>
           <li><a href="#features" class="nav-link">المميزات</a></li>
@@ -831,8 +836,27 @@
             if (target) {
               target.scrollIntoView({ behavior: 'smooth' });
             }
+            // Close mobile menu after navigation
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (navMenu && navToggle && navMenu.classList.contains('is-open')) {
+              navMenu.classList.remove('is-open');
+              navToggle.setAttribute('aria-expanded', 'false');
+              document.body.classList.remove('nav-open');
+            }
           });
         });
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (navToggle && navMenu) {
+          navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            document.body.classList.toggle('nav-open', isOpen);
+          });
+        }
       });
     </script>
 
