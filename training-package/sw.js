@@ -1,7 +1,7 @@
 // Service Worker for GenAI Training Kit
 // يوفر دعم الوضع غير المتصل (Offline) والتخزين المؤقت
 
-const CACHE_NAME = 'genai-training-kit-v3';
+const CACHE_NAME = 'genai-training-kit-v4';
 const urlsToCache = [
   './',
   './index.html',
@@ -34,6 +34,7 @@ self.addEventListener('install', (event) => {
       .then((cache) => {
         return cache.addAll(urlsToCache);
       })
+      .then(() => self.skipWaiting())
       .catch(() => {})
   );
 });
@@ -49,7 +50,7 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 

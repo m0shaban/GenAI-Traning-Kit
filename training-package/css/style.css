@@ -22,7 +22,7 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f3a 100%);
-    color: var(--text-dark);
+    color: var(--text-light);
     overflow-x: hidden;
 }
 
@@ -738,7 +738,8 @@ body {
 .agenda-stat-value.is-green { color: #43e97b; }
 
 .agenda-stat-label {
-    color: var(--text-light);
+    color: var(--text-dark);
+    opacity: 0.75;
 }
 
 .agenda-goal {
@@ -824,6 +825,7 @@ body {
     border-radius: 0.75rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    color: var(--text-dark);
 }
 
 .session-block:hover {
@@ -854,7 +856,8 @@ body {
 }
 
 .session-content {
-    color: var(--text-light);
+    color: inherit;
+    opacity: 0.85;
     line-height: 1.8;
 }
 
